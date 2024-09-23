@@ -1,35 +1,75 @@
 @import './base.css';
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family:      "Poppins", sans-serif;
+  font-weight:      400;
+  font-style:       normal;
+  color:            var(--font-light-color);
+  background-color: var(--mian-bg);
+  font-size:        1rem;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+a {
+  text-decoration:  none;
+  color:            var(--font-light-color);
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+section {
+  width:    100%;
+  padding:  3.75rem 0;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.875rem; }
+h3 { font-size: 1.25rem; }
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+.container {
+  max-width:      75rem;
+  margin-left:    auto;
+  margin-right:   auto;
+}
+
+.row {
+  display:    flex;
+  flex-wrap:  wrap;
+}
+
+.section-title { 
+  margin-bottom:  5rem;
+  text-align:     center;
+}
+
+.bg-light { 
+  background-color: var(--section-light-bg);
+  color:            var(--font-dark-color);
+}
+
+@media (max-width: 1024px) {
+  .main-page { justify-content: center; }
+  .main-logo { display: none !important; }
+  .container { max-width: 94%; }
+  .contact-wrapper { gap: 1.25rem; }
+}
+
+@media (max-width: 768px) {
+  .pc-menu { display: none; }
+  .mobile-menu-btn { display: block; }
+  .projects-wrapper { gap: 20px; }
+  .js-projects-wrapper { width: 80%; }
+  .technology-img { width: 50%; }
+}
+
+@media (max-width: 425px) {
+  .welcome-wrapper { text-align: center; }
+  .js-projects-wrapper { width: 100%; }
+  .technologies-wrapper { gap: 1.25rem; }
+  .technology-img { width: 80%; }
+  .webpage-index { width: 94%; }
+  .section-title { line-height: 40px; }
+  .arrow-left {  left: 20px }
+  .arrow-right {  right: 20px }
 }

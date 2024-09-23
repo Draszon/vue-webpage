@@ -1,85 +1,88 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <h1 class="logo">
+      <RouterLink to="/">peter - draszon</RouterLink>
+    </h1>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
+    <nav class="pc-menu">
+      <RouterLink to="/">Főoldal</RouterLink>
+      <RouterLink to="/projects">Projektek</RouterLink>
+    </nav>
   </header>
 
   <RouterView />
+
+  <footer class="footer">
+    <p class="footer-content">©
+      {{ currentYear }} DRASZON. Minden jog fenntartva.
+    </p>
+  </footer>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      currentYear: new Date().getFullYear()
+    }
+  }
+}
+</script>
+
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
   .logo {
-    margin: 0 2rem 0 0;
+    text-transform:   uppercase;
+    font-weight:      600;
+    font-size:        1.125rem;
   }
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+  header {
+    z-index:              1;
+    background-color:     var(--mian-bg);
+    width:                100%;
+    height:               3.75rem;
+    display:              flex;
+    flex-direction:       row;
+    justify-content:      space-between;
+    align-items:          center;
+    padding:              0 1.875rem;
+    border-bottom:        2px solid var(--menu-bottom-color);
+    position:             fixed;
+    top:                  0px;
+    backdrop-filter:      blur(3px);
   }
 
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+  .pc-menu  {
+  display:        flex;
+  flex-direction: row;
+  height:         100%;
   }
-}
+
+  .pc-menu a {
+    height:       100%;
+    display:      flex;
+    align-items:  center;
+    padding:      0 0.625rem;
+    font-weight:  500;
+    transition:   color .3s;
+  }
+
+  .pc-menu a:hover { 
+    border-bottom:  1px solid var(--font-light-color);
+    color:          hsl(0, 0%, 61%);
+    transition:     color .3s;
+  }
+
+  footer {
+    height:           100px;
+    display:          flex;
+    justify-content:  center;
+    align-items:      center;
+  }
+
+  .footer-content { font-size: 0.875rem; }
 </style>
