@@ -40,7 +40,7 @@ export default {
         const response = await fetch("/games.json");
         this.games = await response.json();
       } catch (error) {
-        console.error('Hiba a játékok betöltésekor:', error);
+        console.error('Hiba a játékok betöltésekor: ', error);
       }
     },
     gameMinus() {

@@ -61,13 +61,13 @@ h3 { font-size: 1.25rem; }
   .pc-menu { display: none; }
   .mobile-menu-btn { display: block; }
   .projects-wrapper { gap: 20px; }
-  .js-projects-wrapper { width: 80%; }
+  .js-projects-wrapper { width: 80% !important; }
   .technology-img { width: 50%; }
 }
 
 @media (max-width: 425px) {
   .welcome-wrapper { text-align: center; }
-  .js-projects-wrapper { width: 100%; }
+  .js-projects-wrapper { width: 100% !important; }
   .technologies-wrapper { gap: 1.25rem; }
   .technology-img { width: 80%; }
   .webpage-index { width: 94%; }

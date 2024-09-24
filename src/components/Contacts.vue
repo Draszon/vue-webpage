@@ -9,13 +9,14 @@
     <div class="container contact-minus">
       <div class="row cont">
         <div class="contact-wrapper">
-          <a :href="contact.link" target="_blank" class="contact"
+          <a target="_blank" class="contact"
           v-if="contactList.length > 0" 
           v-for="contact in contactList" 
+          :href="contact.link"
           :key="contact.name">
             <img class="contact-icon" :src="contact.index" alt="github ikon">
             <p class="contact-name">{{ contact.name }}</p>
-            <p>{{ contact.linkText }}</p>
+            <p class="contact-link-text">{{ contact.linkText }}</p>
           </a>
           <div class="error-msg" v-else><p>Nincsenek elérhetőségek!</p></div>
         </div>
@@ -58,7 +59,7 @@ export default {
   flex-direction:     column;
   align-items:        center;
   justify-content:    center;
-  width:              250px;
+  width:              280px;
   color:              var(--font-dark-color);
   box-shadow:         5px -5px 18px 0 hsla(228, 18%, 11%, 0.20);
   padding:            1.875rem;
