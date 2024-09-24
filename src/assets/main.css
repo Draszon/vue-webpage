@@ -48,6 +48,8 @@ h3 { font-size: 1.25rem; }
   color:            var(--font-dark-color);
 }
 
+.error-msg {color: red;}
+
 @media (max-width: 1024px) {
   .main-page { justify-content: center; }
   .main-logo { display: none !important; }

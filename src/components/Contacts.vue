@@ -9,35 +9,35 @@
     <div class="container contact-minus">
       <div class="row cont">
         <div class="contact-wrapper">
-          <a href="https://facebook.com/draszongameplay" target="_blank" class="contact">
-            <img class="contact-icon" src="/square-facebook.svg" alt="facebook ikon">
-            <p class="contact-name">facebook</p>
-            <p>fb.com/</p>
-            <p>draszongameplay</p>
+          <a :href="contact.link" target="_blank" class="contact"
+          v-if="contactList.length > 0" 
+          v-for="contact in contactList" 
+          :key="contact.name">
+            <img class="contact-icon" :src="contact.index" alt="github ikon">
+            <p class="contact-name">{{ contact.name }}</p>
+            <p>{{ contact.linkText }}</p>
           </a>
-          <a href="https://youtube.com/rapao34gameplay" target="_blank" class="contact">
-            <img class="contact-icon" src="/youtube.svg" alt="youtube ikon">
-            <p class="contact-name">youtube</p>
-            <p>youtube.com/</p>
-            <p>rapao34gameplay</p>
-          </a>
-          <a href="https://twitch.tv/draszon" target="_blank" class="contact">
-            <img class="contact-icon" src="/twitch.svg" alt="twitch ikon">
-            <p class="contact-name">twitch</p>
-            <p>twitch.tv/draszon</p>
-          </a>
-          <a href="https://github.com/draszon" target="_blank" class="contact">
-            <img class="contact-icon" src="/square-github.svg" alt="github ikon">
-            <p class="contact-name">github</p>
-            <p>github.com/draszon</p>
-          </a>
+          <div class="error-msg" v-else><p>Nincsenek elérhetőségek!</p></div>
         </div>
       </div>
     </div>
   </section>
 </template>
 
-<script setup></script>
+<script>
+export default {
+  data() {
+    return {
+      contactList: [
+        {name: "facebook", index: "/square-facebook.svg",linkText: "fb.com/draszongameplay", link: "https://facebook.com/draszongameplay"},
+        {name: "youtube", index: "/youtube.svg", linkText: "youtube.com/rapao34gameplay", link: "https://youtube.com/rapao34gameplay"},
+        {name: "twitch", index: "/twitch.svg", linkText: "twitch.tv/draszon", link: "https://twitch.tv/draszon"},
+        {name: "github", index: "/square-github.svg", linkText: "github.com/draszon", link: "https://github.com/draszon"}
+      ]
+    }
+  }
+}
+</script>
 
 <style scoped>
 .contact-minus { margin-top: -8.75rem; }

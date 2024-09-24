@@ -5,29 +5,31 @@
       <div class="row technology">
         <img class="technology-img" src="/computer-graphic.png" alt="technológiák index">
         <div class="technologies-wrapper">
-          <div class="prog-wrapper">
-            <img class="technology-index" src="/html5.svg" alt="html logo">
-            <p class="technology-name">html</p>
+          <div class="prog-wrapper" v-if="technologiesList.length > 0" v-for="tech in technologiesList" :key="tech.name">
+            <img class="technology-index" :src="tech.index" alt="vuejs logo">
+            <p class="technology-name">{{ tech.name }}</p>
           </div>
-          <div class="prog-wrapper">
-            <img class="technology-index" src="/css3-alt.svg" alt="css logo">
-            <p class="technology-name">css</p>
-          </div>
-          <div class="prog-wrapper">
-            <img class="technology-index" src="/js.svg" alt="js logo">
-            <p class="technology-name">js</p>
-          </div>
-          <div class="prog-wrapper">
-            <img class="technology-index" src="/vue-9-logo.svg" alt="vuejs logo">
-            <p class="technology-name">vue.js</p>
-          </div>
+          <div class="error-msg" v-else><p>Nincsenek technlológiák!</p></div>
         </div>
       </div>
     </div>
   </section>
 </template>
 
-<script setup></script>
+<script>
+export default {
+  data() {
+    return {
+      technologiesList: [
+        {name: "html", index: "/html5.svg"},
+        {name: "css", index: "/css3-alt.svg"},
+        {name: "js", index: "/js.svg"},
+        {name: "vue.js", index: "/vue-9-logo.svg"}
+      ]
+    }
+  }
+}
+</script>
 
 <style scoped>
 .tech-section {
