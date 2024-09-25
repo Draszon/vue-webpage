@@ -10,7 +10,9 @@ import { RouterLink, RouterView } from 'vue-router'
 
     <nav class="pc-menu">
       <RouterLink to="/">Főoldal</RouterLink>
-      <RouterLink to="/projects">Projektek</RouterLink>
+      <a href="#projects">Projektek</a>
+      <a href="#tech">Technológiák</a>
+      <a href="#contacts">Elérhetőségek</a>
     </nav>
   </header>
 

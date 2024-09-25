@@ -10,14 +10,33 @@
   <main>
     <Welcome />
     <WebsiteProjects />
-    <Projects />
+    <Projects :games="games" />
     <Tech />
     <Contacts />
   </main>
 </template>
 
 <script>
-
+export default {
+  data() {
+    return {
+      games: null
+    }
+  },
+  methods: {
+    async fetchData() {
+      try {
+        const response = await fetch("/games.json");
+        this.games = await response.json();
+      } catch (error) {
+        console.error('Hiba a játékok betöltésekor: ', error);
+      }
+    }
+  },
+  mounted() {
+    this.fetchData();
+  }
+}
 </script>
 
 <style scoped>

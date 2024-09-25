@@ -10,10 +10,10 @@ import { RouterLink, RouterView } from 'vue-router'
         <div class="js-projects-wrapper">
           <img class="arrow arrow-left" @click="gameMinus" src="/arrow-left.svg" alt="balra nyíl">
           <div class="actual-jsproject" v-if="games">
-            <RouterLink to="/projects" class="project-link">
+            <RouterLink :to="games[gameCounter].path" class="project-link">
               <img  class="project-index" :src="games[gameCounter].img" alt="black jack indexkép">
             </RouterLink>
-            <RouterLink to="/projects" class="project-link">
+            <RouterLink :to="games[gameCounter].path" class="project-link">
               <h3 class="project-title">{{ games[gameCounter].name }}</h3>
             </RouterLink>
             <p class="project-description">{{ games[gameCounter].description }}</p>
@@ -28,21 +28,18 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <script>
 export default {
+  props: {
+    games: {
+      type: Array,
+      default: () => [],
+    }
+  },
   data() {
     return {
-      games: null,
       gameCounter: 0
     }
   },
   methods: {
-    async fetchData() {
-      try {
-        const response = await fetch("/games.json");
-        this.games = await response.json();
-      } catch (error) {
-        console.error('Hiba a játékok betöltésekor: ', error);
-      }
-    },
     gameMinus() {
       if (this.games) {
         this.gameCounter--;
@@ -60,9 +57,6 @@ export default {
       }
     }
   },
-  mounted() {
-    this.fetchData();
-  }
 }
 </script>
 

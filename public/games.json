@@ -15,7 +15,7 @@
     "img": "/hangman.svg",
     "name": "Akasztófa",
     "description": "A találgató játékos javasol egy betűt, mely ha szerepel a kitalálandó szóban, a betű helyének megfelelő vonalakra ráírásra kerül. Amennyiben a betű nem szerepel a kitalálandó szóban, úgy egy stilizált akasztófa egy része kerül lerajzolásra.",
-    "path": "/hangman"
+    "path": "/akasztofa"
   },
   {
     "img": "/black-jack.svg",
