@@ -1,5 +1,5 @@
 <template>
-  <h2 style="margin-top: 100px;">Yess, működik!</h2>
+  <h2 style="margin-top: 100px;">Feltöltés alatt</h2>
   </template>
   
   <script>
