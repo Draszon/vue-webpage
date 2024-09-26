@@ -2,13 +2,14 @@
   <div class="table">
     <div class="cell"
       v-for="(cell, index) in table"
-      :key="index">
+      :key="index"
+      @click="move(index)">
     </div>
   </div>
   <div class="result-wrapper">
-  	<p class="playerX">"X" Játákos: <span id="xp"></span></p>
-  	<p class="playerO">"O" Játákos: <span id="op"></span></p>
-  	<input type="button" id="new-game" value="Új játék">
+  	<p class="playerX">"X" Játákos: {{ playerX }}</p>
+  	<p class="playerO">"O" Játákos: {{ playerO }}</p>
+  	<input type="button" class="btn" value="Új játék" @click="newGame()">
   </div>
 </template>
 
@@ -29,7 +30,18 @@ export default {
 		    [2, 5, 8],
 		    [0, 4, 8],
 		    [2, 4, 6]
-      ]
+      ],
+      checkList: []
+    }
+  },
+  methods: {
+    move(index) {
+      if (!this.checkList.includes(index)) {
+        this.checkList.push(index);
+        console.log(this.checkList);
+
+        
+      }
     }
   }
 }
@@ -39,62 +51,37 @@ export default {
 .table {
   display: grid;
   grid-template-columns: repeat(3, 100px);
-  grid-gap: 10px;
   justify-content: center;
   margin: 20px 0;
 }
 
 .cell {
+  cursor: pointer;
   width: 100px;
   height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f0f0f0;
-  font-size: 24px;
-}
-/* 
-.table { font-size: 80px; }
-
-.border-row {
-  border-bottom: 3px solid rgb(224, 224, 224);
-  border-top: 3px solid rgb(224, 224, 224);
-}
-
-.border-field {
-  border-left: 3px solid rgb(224, 224, 224);
-  border-right: 3px solid rgb(224, 224, 224);
-}
-
-.field {
-  height: 100px;
-  width: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-input {
-  cursor: pointer;
-  font-size: 1rem;
-  padding: 5px 20px;
+  color: white;
+  border: 1px solid white;
+  font-size: 100px;
+  font-weight: 200;
 }
 
 .result-wrapper {
-  margin-top: 50px;
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   font-size: 30px;
-  height: 150px;
+  text-align: center;
+  margin: 10px 0;
 }
 
-.errors {
-  color: var(--error-msg-color);
+.playerX {margin-bottom: 20px;}
+
+.btn {
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 20px;
+  width: 100px;
   height: 30px;
-  display: block;
-}*/
+}
+
 </style>
