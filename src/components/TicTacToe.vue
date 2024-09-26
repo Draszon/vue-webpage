@@ -1,20 +1,9 @@
 <template>
   <div class="table">
-  	<div class="row">
-  		<div data-index="0" class="field" id="cell1"></div>
-  		<div data-index="1" class="field border-field" id="cell2"></div>
-  		<div data-index="2" class="field" id="cell3"></div>
-  	</div>
-  	<div class="row border-row">
-  		<div data-index="3" class="field" id="cell4"></div>
-  		<div data-index="4" class="field border-field" id="cell5"></div>
-  		<div data-index="5" class="field"></div>
-  	</div>
-  	<div class="row">
-  		<div data-index="6" class="field" id="cell7"></div>
-  		<div data-index="7" class="field border-field" id="cell8"></div>
-  		<div data-index="8" class="field" id="cell9"></div>
-  	</div>
+    <div class="cell"
+      v-for="(cell, index) in table"
+      :key="index">
+    </div>
   </div>
   <div class="result-wrapper">
   	<p class="playerX">"X" Játákos: <span id="xp"></span></p>
@@ -47,6 +36,24 @@ export default {
 </script>
 
 <style scoped>
+.table {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  font-size: 24px;
+}
+/* 
 .table { font-size: 80px; }
 
 .border-row {
@@ -89,5 +96,5 @@ input {
   color: var(--error-msg-color);
   height: 30px;
   display: block;
-}
+}*/
 </style>
