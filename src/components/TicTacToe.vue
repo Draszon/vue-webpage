@@ -7,9 +7,9 @@
       :class="{ 'empty': cell === null, 'not-empty': cell !== null && selectedCell === index  }">{{ cell }}</div>
   </div>
   <div class="result-wrapper">
-  	<p class="playerX">"X" Játákos: {{ playerX }}</p>
-  	<p class="playerO">"O" Játákos: {{ playerO }}</p>
-  	<input type="button" class="btn" value="Új játék" @click="tableReset()">
+    <p class="playerX">"X" Játákos: {{ playerX }}</p>
+    <p class="playerO">"O" Játákos: {{ playerO }}</p>
+    <input type="button" class="btn" value="Új játék" @click="tableReset()">
   </div>
 </template>
 
@@ -24,13 +24,13 @@ export default {
       selectedCell: null,
       wins: [
         [0, 1, 2],
-		    [3, 4, 5],
-		    [6, 7, 8],
-		    [0, 3, 6],
-		    [1, 4, 7],
-		    [2, 5, 8],
-		    [0, 4, 8],
-		    [2, 4, 6]
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
       ]
     }
   },
@@ -80,13 +80,14 @@ export default {
 <style scoped>
 .not-empty {color: hsl(0, 100%, 57%) !important;}
 .empty {color: hsl(0, 0%, 100%) !important;}
+.cell {transition: color .2s;}
 
 .table {
   display: grid;
   grid-template-columns: repeat(3, 100px);
   justify-content: center;
   margin: 1.25rem 0;
-}
+} 
 
 .cell {
   cursor: pointer;
