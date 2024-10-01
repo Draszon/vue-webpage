@@ -3,42 +3,75 @@
   <h2 class="board-title">scoreboard</h2>
   <div class="scores-wrapper">
     <div class="names">
-      <h3 class="player-name">SZ Peti</h3>
-      <h3 class="player-name">S Peti</h3>
+      <h3 class="player-name">{{ players.firstPlayer.name }}</h3>
+      <h3 class="player-name">{{ players.secondPlayer.name }}</h3>
     </div>
     <div class="score">
       <ul class="player-score">
-        <li>12</li>
+        <li></li>
       </ul>
 
       <ul class="player-score">
-        <li>12</li>
+        <li></li>
       </ul>
     </div>
   </div>
   <div class="sum-wrapper">
-    <p>301</p>
-    <p>301</p>
+    <p></p>
+    <p></p>
   </div>
 </div>
 
 <div class="input-wrapper">
-    <input type="text" name="" id="" placeholder="Első játékos neve">
-    <input type="text" name="" id="" placeholder="Második játékos neve">
-    <input type="text" name="" id="" placeholder="301 vagy 501">
-    <input style="cursor: pointer;" type="button" value="Kezdés">
-  </div>
+  <input v-model="players.firstPlayer.name" type="text" placeholder="Első játékos neve">
+  <input v-model="players.secondPlayer.name" type="text" placeholder="Második játékos neve">
+  <input v-model="gameType" type="text" placeholder="301 vagy 501">
+  <input style="cursor: pointer;" type="button" value="Kezdés">
+</div>
+
+<!--<div class="input-wrapper">
+  <input type="text" placeholder="Első dobás">
+  <input type="text" placeholder="Második dobás">
+  <input type="text" placeholder="Harmadik dobás">
+  <input style="cursor: pointer;" type="button" value="Rögzít">
+</div>-->
 </template>
 
 <script>
+export default {
+  data() {
+    return {
+      gameType: null,
+      players: {
+        firstPlayer: {
+          name: '',
+          score: 0
+        },
+        secondPlayer: {
+          name: '',
+          score: 0
+        }
+      },
+    }
+  },
+  methods: {
+    //játék kezdésekor ellenőrzi megadott adatokat, hogy
+    //megfelelnek-e a szabályoknak
+    game() {
 
+    },
+    startFieldValidation() {
+
+    }
+  }
+}
 </script>
 
 <style scoped>
 .scoreboard {
-  padding: 10px;
-  height: 520px;
-  width: 400px;
+  padding: 0.625rem;
+  height: 32.5rem;
+  width: 21.875rem;
   display: flex;
   flex-direction: column;
   border: 1px solid white;
@@ -60,19 +93,19 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin: 10px 0;
+  margin: 0.625rem 0;
 }
 
 .score {
-  height: 380px;
+  height: 23.75rem;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin: 10px 0;
+  margin: 0.625rem 0;
 }
 
 .player-score li {
-  margin: 5px 0;
+  margin: 0.3125rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,14 +125,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 1.25rem;
 }
 
 .input-wrapper input {
   color: white;
-  width: 200px;
-  margin: 5px 0;
-  padding: 5px;
+  width: 12.5rem;
+  margin: 0.3125rem 0;
+  padding: 0.3125rem;
   border-radius: 5px;
   background-color: hsla(0, 0%, 62%, 0);
   border: 1px solid white;
