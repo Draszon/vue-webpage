@@ -69,22 +69,14 @@ export default {
         const score = this.playerScore(
           this.firstScore, this.secondScore, this.thirdScore
         );
-        
-        this.updateScore(score, this.players.firstPlayer.score);
-        
-
-
-
-        this.players.firstPlayer.score -= score;
-        this.players.firstPlayer.scoreList.push(score);
+        this.updateScore(score);
         this.scoreFieldReset();
         this.firstPlayerRound = !this.firstPlayerRound;
       } else {
         const score = this.playerScore(
           this.firstScore, this.secondScore, this.thirdScore
         );
-        this.players.secondPlayer.score -= score;
-        this.players.secondPlayer.scoreList.push(score);
+        this.updateScore(score);
         this.scoreFieldReset();
         this.firstPlayerRound = !this.firstPlayerRound;
       }
@@ -122,7 +114,24 @@ export default {
       this.secondScore = null;
       this.thirdScore = null;
     },
-    updateScore(current, pScore) {
+    updateScore(score) {
+      if (this.firstPlayerRound) {
+        const pScore = this.players.firstPlayer.score - score;
+        if (pScore < 0) {
+          this.players.firstPlayer.score = this.players.firstPlayer.score;
+        } else {
+          this.players.firstPlayer.score = pScore;
+          this.players.firstPlayer.scoreList.push(score);
+        }
+      } else if (!this.firstPlayerRound) {
+        const pScore = this.players.secondPlayer.score - score;
+        if (pScore < 0) {
+          this.players.secondPlayer.score = this.players.secondPlayer.score;
+        } else {
+          this.players.secondPlayer.score = pScore;
+          this.players.secondPlayer.scoreList.push(score);
+        }
+      }
       
     }
   }
