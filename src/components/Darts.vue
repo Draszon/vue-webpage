@@ -66,16 +66,12 @@ export default {
   methods: {
     game() {
       if (this.firstPlayerRound) {
-        const score = this.playerScore(
-          this.firstScore, this.secondScore, this.thirdScore
-        );
+        const score = this.playerScore(this.firstScore, this.secondScore, this.thirdScore);
         this.updateScore(score);
         this.scoreFieldReset();
         this.firstPlayerRound = !this.firstPlayerRound;
       } else {
-        const score = this.playerScore(
-          this.firstScore, this.secondScore, this.thirdScore
-        );
+        const score = this.playerScore(this.firstScore, this.secondScore, this.thirdScore);
         this.updateScore(score);
         this.scoreFieldReset();
         this.firstPlayerRound = !this.firstPlayerRound;
@@ -119,17 +115,27 @@ export default {
         const pScore = this.players.firstPlayer.score - score;
         if (pScore < 0) {
           this.players.firstPlayer.score = this.players.firstPlayer.score;
+          this.players.firstPlayer.scoreList.push(0);
         } else {
           this.players.firstPlayer.score = pScore;
           this.players.firstPlayer.scoreList.push(score);
+          if (pScore === 0) {
+            alert("Gratulálok " + this.players.firstPlayer.name + " megnyerted a játékot!");
+            location.reload();
+          }
         }
       } else if (!this.firstPlayerRound) {
         const pScore = this.players.secondPlayer.score - score;
         if (pScore < 0) {
           this.players.secondPlayer.score = this.players.secondPlayer.score;
+          this.players.secondPlayer.scoreList.push(0);
         } else {
           this.players.secondPlayer.score = pScore;
           this.players.secondPlayer.scoreList.push(score);
+          if (pScore === 0) {
+            alert("Gratulálok " + this.players.secondPlayer.name + " megnyerted a játékot!");
+            location.reload();
+          }
         }
       }
       
