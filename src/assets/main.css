@@ -51,27 +51,27 @@ h3 { font-size: 1.25rem; }
 .error-msg {color: red;}
 
 @media (max-width: 1024px) {
-  .main-page { justify-content: center; }
+  .main-page { justify-content: center !important; }
   .main-logo { display: none !important; }
-  .container { max-width: 94%; }
-  .contact-wrapper { gap: 1.25rem; }
+  .container { max-width: 94% !important; }
+  .contact-wrapper { gap: 1.25rem !important; }
 }
 
 @media (max-width: 768px) {
-  .pc-menu { display: none; }
-  .mobile-menu-btn { display: block; }
-  .projects-wrapper { gap: 20px; }
+  .pc-menu { display: none !important; }
+  .mobile-menu-btn { display: block !important; }
+  .projects-wrapper { gap: 20px !important; }
   .js-projects-wrapper { width: 80% !important; }
-  .technology-img { width: 50%; }
+  .technology-img { width: 50% !important; }
 }
 
 @media (max-width: 425px) {
-  .welcome-wrapper { text-align: center; }
+  .welcome-wrapper { text-align: center !important; }
   .js-projects-wrapper { width: 100% !important; }
-  .technologies-wrapper { gap: 1.25rem; }
-  .technology-img { width: 80%; }
-  .webpage-index { width: 94%; }
-  .section-title { line-height: 40px; }
-  .arrow-left {  left: 20px }
-  .arrow-right {  right: 20px }
+  .technologies-wrapper { gap: 1.25rem !important; }
+  .technology-img { width: 80% !important; }
+  .webpage-index { width: 94% !important; }
+  .section-title { line-height: 40px !important; }
+  .arrow-left {  left: 20px !important; }
+  .arrow-right {  right: 20px !important; }
 }

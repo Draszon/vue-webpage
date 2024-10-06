@@ -16,7 +16,7 @@
 
 <style scoped>
 .webpage-index { 
-  width:          25rem;
+  width:          400px;
   border-radius:  10px;
 }
 
