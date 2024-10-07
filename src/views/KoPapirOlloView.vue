@@ -1,11 +1,28 @@
+<script setup>
+  import KoPapirOllo from '../components/KoPapirOllo.vue';
+</script>
+
 <template>
-  <h2 style="margin-top: 100px;">Feltöltés alatt</h2>
-  </template>
+  <section style="margin-top: 60px;">
+    <div class="container">
+      <div class="row">
+        <KoPapirOllo />
+      </div>
+    </div>
+  </section>
+</template>
   
-  <script>
-  
-  </script>
-  
-  <style scoped>
-  
-  </style>
+<style scoped>
+  .container {
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
