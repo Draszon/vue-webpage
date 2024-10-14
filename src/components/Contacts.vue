@@ -30,10 +30,29 @@ export default {
   data() {
     return {
       contactList: [
-        {name: "facebook", index: "/square-facebook.svg",linkText: "fb.com/draszongameplay", link: "https://facebook.com/draszongameplay"},
-        {name: "youtube", index: "/youtube.svg", linkText: "youtube.com/rapao34gameplay", link: "https://youtube.com/rapao34gameplay"},
-        {name: "twitch", index: "/twitch.svg", linkText: "twitch.tv/draszon", link: "https://twitch.tv/draszon"},
-        {name: "github", index: "/square-github.svg", linkText: "github.com/draszon", link: "https://github.com/draszon"}
+        {
+          name: "facebook",
+          index: "/social/square-facebook.svg",
+          linkText: "fb.com/draszongameplay",
+          link: "https://facebook.com/draszongameplay"
+        },
+        {
+          name: "youtube", index: "/social/youtube.svg",
+          linkText: "youtube.com/rapao34gameplay",
+          link: "https://youtube.com/rapao34gameplay"
+        },
+        {
+          name: "twitch",
+          index: "/social/twitch.svg",
+          linkText: "twitch.tv/draszon",
+          link: "https://twitch.tv/draszon"
+        },
+        {
+          name: "github",
+          index: "/social/square-github.svg",
+          linkText: "github.com/draszon",
+          link:"https://github.com/draszon"
+        }
       ]
     }
   }

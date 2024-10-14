@@ -1,36 +1,36 @@
 [
   {
-    "img": "/tic-tac-toe-game.svg",
+    "img": "/jsindex/tic-tac-toe-game.svg",
     "name": "Tic-Tac-Toe",
     "description": "A két játékos hagyományosan X és O alakú jelekkel (bábukkal) játszik. A 3×3 mezőből álló táblára felváltva teszik le a jeleiket, bármelyik még szabad mezőre. Az nyer, akinek sikerül egy vonalban 3 jelet elhelyeznie, vízszintes, függőleges vagy átlós irányban.",
     "path": "/tictactoe"
   },
   {
-    "img": "/rock-paper-scissors.png",
+    "img": "/jsindex/rock-paper-scissors.png",
     "name": "Kő Papír Olló",
     "description": "A játékosok hangosan háromig számolnak vagy a játék nevét, a kő – papír – olló-t mondják, minden számolásnál meglendítve a felemelt és ökölbe szorított kezüket. A harmadik számolás közben vagy az utána következő ütemben a játékosok kezükkel felveszik a három alakzat egyikét és megmutatják az ellenfelüknek.",
     "path": "/kopapirollo"
   },
   {
-    "img": "/hangman.svg",
+    "img": "/jsindex/hangman.svg",
     "name": "Akasztófa",
     "description": "A találgató játékos javasol egy betűt, mely ha szerepel a kitalálandó szóban, a betű helyének megfelelő vonalakra ráírásra kerül. Amennyiben a betű nem szerepel a kitalálandó szóban, úgy egy stilizált akasztófa egy része kerül lerajzolásra.",
     "path": "/akasztofa"
   },
   {
-    "img": "/black-jack.svg",
+    "img": "/jsindex/black-jack.svg",
     "name": "Black jack",
     "description": "A Blackjack egy klasszikus kártyajáték, ahol a célod, hogy kártyáid összértéke minél közelebb legyen a 21-hez, anélkül, hogy túllépnéd. A játékban a játékos és az osztó versenyeznek egymással.",
     "path": "/blackjack"
   },
   {
-    "img": "/legyen ön is milliomos.png",
+    "img": "/jsindex/legyen ön is milliomos.png",
     "name": "Legyen Ön is Milliomos",
     "description": "A Legyen Ön is Milliomos egy televíziós kvízjáték, műveltségi vetélkedő, amelyben rendkívül magas díjakat nyerhet a játékos, ha jól felel az egymást követő (Magyarországon 15) feleletválasztós kérdésekre.",
     "path": "/millionaire"
   },
   {
-    "img": "/dart-board.svg",
+    "img": "/jsindex/dart-board.svg",
     "name": "Darts",
     "description": "Való életben szerzett pontjaidat tudod a táblázatba berögzíteni és a játék típusától függően kiszámolja a két játékos pontjait.",
     "path": "/darts"

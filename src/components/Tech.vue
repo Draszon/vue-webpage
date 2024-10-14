@@ -21,10 +21,10 @@ export default {
   data() {
     return {
       technologiesList: [
-        {name: "html", index: "/html5.svg"},
-        {name: "css", index: "/css3-alt.svg"},
-        {name: "js", index: "/js.svg"},
-        {name: "vue.js", index: "/vue-9-logo.svg"}
+        {name: "html", index: "/technology/html5.svg"},
+        {name: "css", index: "/technology/css3-alt.svg"},
+        {name: "js", index: "/technology/js.svg"},
+        {name: "vue.js", index: "/technology/vue-9-logo.svg"}
       ]
     }
   }

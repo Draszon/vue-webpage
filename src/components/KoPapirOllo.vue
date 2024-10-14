@@ -79,7 +79,6 @@
             this.toggleClass('pcPaper');
             break;
           case 'scissor':
-
             this.toggleClass('pcScissor');
             break;
           default:
