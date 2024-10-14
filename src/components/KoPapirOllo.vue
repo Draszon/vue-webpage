@@ -26,7 +26,7 @@
   <div class="selection">
     <i class="fa-solid fa-hand-back-fist icons player-icons" @click="game('rock')"></i>
     <i class="fa-solid fa-hand icons player-icons" @click="game('paper')"></i>
-    <i class="fa-solid fa-hand-scissors icons player-icons" @click="game('scissors')"></i>
+    <i class="fa-solid fa-hand-scissors icons player-icons" @click="game('scissor')"></i>
   </div>
 </template>
 
@@ -56,10 +56,14 @@
         }, 500);
       },
       winCheck(player, pc) {
-        if (player === pc) {
-          return 'Döntetlen';
-        } else if (player === 'rock' && pc === 'scissor' || player === 'paper' && pc === 'rock' || player === 'scissor' && pc === 'paper') {
+        if ((player === 'rock' && pc === 'scissor') || (player === 'paper' && pc === 'rock') || (player === 'scissor' && pc === 'paper')) {
+          this.playerScore++;
           return 'Nyertél';
+        } else if (player === pc) {
+          return 'Döntetlen';
+        } else {
+          this.pcScore++;
+          return 'Vesztettél';
         }
       },
       game(choice) {
@@ -75,12 +79,13 @@
             this.toggleClass('pcPaper');
             break;
           case 'scissor':
+
             this.toggleClass('pcScissor');
             break;
           default:
             console.log("Valami hiba történt a választásnál!");
         }
-        this.winText = this.winCheck(this.pcSelect, this.playerSelected);
+        this.winText = this.winCheck(this.playerSelected, this.pcSelect);
         setTimeout(() => {
           this.winText = '';
         }, 500);
