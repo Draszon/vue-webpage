@@ -1,8 +1,11 @@
 <template>
-  <h2>Kategória: gyümölcs</h2>
-  <h3 class="the-word">________</h3>
+  <h2>Kategória: {{ selectedCategory }}</h2>
+  <p class="the-word">___________</p>
   <div class="letter-container">
-    <input v-for="letter in letters" type="button" :value="letter">
+    <input 
+      v-for="(letter, index) in letters"
+      @click="game(letter, index)"
+      type="button" :value="letter">
   </div>
   <div class="hangman-container">
     <img src="/hangman/8.png" alt="akasztófa kép">
@@ -10,6 +13,25 @@
 </template>
 
 <script>
+  const words = [
+    [
+      'alma', 'körte', 'banán', 'narancs', 'szilva', 'eper',
+      'ananász', 'mangó', 'szőlő', 'grépfrút'
+    ],
+    [
+      'audi', 'bmw', 'mercedes', 'ford', 'tesla', 'volkswagen',
+      'toyota', 'honda', 'porsche', 'ferrari'
+    ],
+    [
+      'kanapé', 'fotel', 'íróasztal', 'ágy', 'étkezőasztal',
+      'könyvespolc', 'komód', 'ruhásszekrény', 'éjjeliszekrény', 'kávézóasztal'
+    ],
+    [
+      'rózsa', 'napraforgó', 'tulipán', 'levendula', 'jázmin',
+      'ciklámen', 'pálmafa', 'borostyán', 'kaktusz', 'tátika'
+    ]
+  ];
+
 export default {
   data() {
     return {
@@ -20,11 +42,32 @@ export default {
         'r', 's', 't', 'u', 'ú', 'ü', 'ű', 'v',
         'w', 'x', 'y', 'z'
       ],
-      fruits: ['alma', 'körte', 'banán', 'narancs', 'szilva', 'eper', 'ananász', 'mangó', 'szőlő', 'grépfrút'],
-      cars: ['audi', 'bmw', 'mercedes', 'ford', 'tesla', 'volkswagen', 'toyota', 'honda', 'porsche', 'ferrari'],
-      furnitures: ['kanapé', 'fotel', 'íróasztal', 'ágy', 'étkezőasztal', 'könyvespolc', 'komód', 'ruhásszekrény', 'éjjeliszekrény', 'kávézóasztal'],
-      plants: ['rózsa', 'napraforgó', 'tulipán', 'levendula', 'jázmin', 'ciklámen', 'pálmafa', 'borostyán', 'kaktusz', 'tátika'],
+      categoryList: ['gyümölcs', 'autó', 'bútor', 'növény'],
+      selectedCategory: '',
+      selectedWord: '',
     }
+  },
+  methods: {
+    random(num) { //random szám generálása megadott paraméter alapján
+      return Math.floor(Math.random() * num);
+    },
+    game(letter, index) {
+      this.letters.splice(index, 1);
+    },
+    generateWord() {
+      const categoryRandom = this.random(this.categoryList.length);
+
+      //kategória és szó sorsolása a játék elején
+      this.selectedCategory = this.categoryList[categoryRandom];
+      //a words tömbből a hossza alapján sorsolt kategórián belül sorsolok egy szót is
+      this.selectedWord = words[categoryRandom][this.random([categoryRandom].length)];
+      
+      //keresett szó és kategória
+      console.log('Kategória: ', this.selectedCategory, 'Szó: ', this.selectedWord);
+    },
+  },
+  mounted() {
+    this.generateWord();
   }
 }
 </script>
