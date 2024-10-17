@@ -77,6 +77,8 @@ export default {
 
       this.selectedWordLetters = Array(this.selectedWord.length).fill(null);
     },
+    //megkapja a két listát és összehasonlítja minden elemét hogy azonosak-e
+    //ha igen akkor igazat ad vissza és kitalálta a játékos
     wonCheck(word, list) {
       for (let i = 0; i <= this.selectedWord.length; i++) {
         if (word[i] !== list[i]){
@@ -87,6 +89,9 @@ export default {
     },
     game(letter, index) {
       this.letters.splice(index, 1);
+      //a játékos által kattintott betű szerepel a szóban, akkor hozzáadja
+      //a selectedWordLetters listához az adott helyre ahol szerepelnie kell
+      //ami utána kiíratódik a kijelzőre
       if (this.selectedWord.includes(letter)) {
         for (let i = 0; i < this.selectedWord.length; i++) {
           if (letter === this.selectedWord[i]) {
@@ -95,8 +100,8 @@ export default {
         }
       } else {
         this.wrongGuesses++;
-        if (this.wrongGuesses === 8) {
-          this.wintext = "A kitalálandó szó: ", this.selectedWord, " lett volna.";
+        if (this.wrongGuesses === 7) {
+          this.wintext = "A kitalálandó szó: " + this.selectedWord + " lett volna.";
           setTimeout(() => {
             location.reload();
           }, 2000);
