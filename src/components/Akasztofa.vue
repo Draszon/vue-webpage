@@ -1,7 +1,7 @@
 <template>
   <h2>Kategória: {{ selectedCategory }}</h2>
   <div class="the-word" style="margin-bottom: -10px;">
-    <p v-for="(x, index) in selectedWordLetters">{{ x }}</p>
+    <p v-for="(x, index) in selectedWordLetters" style="height: 21px;">{{ x }}</p>
   </div>
   <div class="the-word" style="margin-top: -5px;">
     <p v-for="x in selectedWord">_</p>
@@ -12,9 +12,9 @@
       @click="game(letter, index)"
       type="button" :value="letter">
   </div>
-  <h3>{{ wintext }}</h3>
+  <h3 class="win-text">{{ wintext }}</h3>
   <div class="hangman-container">
-    <img :src="theHangMan[hangManCounter]" alt="akasztófa kép">
+    <img v-if="wrongGuesses != null" :src="theHangMan[wrongGuesses]" alt="akasztófa kép">
   </div>
 </template>
 
@@ -58,6 +58,7 @@ export default {
       selectedWordLetters: [],
       hasWon: false,
       wintext: '',
+      wrongGuesses: null,
     }
   },
   methods: {
@@ -92,13 +93,22 @@ export default {
             this.selectedWordLetters[i] = letter;
           }
         }
+      } else {
+        this.wrongGuesses++;
+        if (this.wrongGuesses === 8) {
+          this.wintext = "A kitalálandó szó: ", this.selectedWord, " lett volna.";
+          setTimeout(() => {
+            location.reload();
+          }, 2000);
+        }
       }
+      
       this.hasWon = this.wonCheck(this.selectedWord, this.selectedWordLetters);
       if (this.hasWon) {
         this.wintext = 'Gratulálok, kitaláltad!';
         setTimeout(() => {
           location.reload();
-        }, 1000);
+        }, 2000);
       }
     },
   },
@@ -109,6 +119,11 @@ export default {
 </script>
 
 <style scoped>
+.win-text {
+  height: 21px;
+  margin: 10px 0;
+}
+
 .the-word {
   margin: 50px 0;
   display: flex;
@@ -131,7 +146,7 @@ export default {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .letter-container input {
@@ -148,7 +163,7 @@ export default {
   border-radius: 5px;
   font-weight: 700;
 }
-
+.hangman-container { height: 305px; }
 .hangman-container img { height: 300px; }
 
 @media (max-width: 425px) { .letter-container { width: 370px; } }
