@@ -16,19 +16,19 @@ import { RouterLink, RouterView } from 'vue-router'
     </nav>
 
     <div class="mobile-menu-btn">
-      <img @click="navOpen()" :class="{ 'mobile-menu-close': mobileMenuOpen }" class="menu-open" src="/menu-open.svg" alt="menü nyitó gomb">
-      <img @click="navClose()" :class="{ 'mobile-menu-open': mobileMenuOpen }" class="menu-close" src="/menu-close.svg" alt="menü záró gomb">
+      <img @click="navi()" :class="{ 'mobile-menu-close': mobileMenuOpen }" class="menu-open" src="/menu-open.svg" alt="menü nyitó gomb">
+      <img @click="navi()" :class="{ 'mobile-menu-open': mobileMenuOpen }" class="menu-close" src="/menu-close.svg" alt="menü záró gomb">
     </div>
   </header>
 
-  <nav>
-    <div class="mobile-menu" :class="{ 'mobile-open': mobileMenuOpen, 'mobile-close': !mobileMenuOpen }">
-      <RouterLink to="/" @click="navClose()" class="menu-item">Főoldal</RouterLink>
-      <a @click="navClose()" class="menu-item" href="#projects">Projektek</a>
-      <a @click="navClose()" class="menu-item" href="#tech">Technológiák</a>
-      <a @click="navClose()" class="menu-item" href="#contacts">Elérhetőségek</a>
+  <Transition>
+    <div v-if="mobileMenuOpen" class="mobile-menu" :class="{ 'mobile-open': mobileMenuOpen, 'mobile-close': !mobileMenuOpen }">
+      <RouterLink to="/" @click="navi()" class="menu-item">Főoldal</RouterLink>
+      <a @click="navi()" class="menu-item" href="#projects">Projektek</a>
+      <a @click="navi()" class="menu-item" href="#tech">Technológiák</a>
+      <a @click="navi()" class="menu-item" href="#contacts">Elérhetőségek</a>
     </div>
-  </nav>
+  </Transition>
 
   <RouterView />
 
@@ -48,10 +48,7 @@ export default {
     }
   },
   methods: {
-    navOpen() {
-      this.mobileMenuOpen = !this.mobileMenuOpen;
-    },
-    navClose() {
+    navi() {
       this.mobileMenuOpen = !this.mobileMenuOpen;
     }
   }
@@ -59,11 +56,6 @@ export default {
 </script>
 
 <style scoped>
-  .mobile-open { height: 200px !important; }
-  .mobile-close { height: 0 !important; }
-  .mobile-menu-open { display: block !important; }
-  .mobile-menu-close { display: none !important; }
-
   .logo {
     text-transform:   uppercase;
     font-weight:      600;
@@ -128,9 +120,19 @@ export default {
     display:            flex;
     flex-direction:     column;
     height:             0;
-    transition:         .5s;
+    transition:         .2s;
     overflow:           hidden;
   }
+
+  .mobile-open { height: 200px !important; }
+  .mobile-close { height: 0 !important; }
+  .mobile-menu-open { display: block !important; }
+  .mobile-menu-close { display: none !important; }
+
+  .v-enter-from { opacity: 0; }
+  .v-enter-to { opacity: 1; }
+  .v-leave-from { opacity: 1; }
+  .v-leave-to { opacity: 0; }
   
   .menu-item {
     color:            var(--font-dark-color);

@@ -7,7 +7,8 @@
     <p v-for="x in selectedWord">_</p>
   </div>
   <div class="letter-container">
-    <input 
+    <input
+      v-if="!hasWon && wrongGuesses <= 6" 
       v-for="(letter, index) in letters"
       @click="game(letter, index)"
       type="button" :value="letter">
@@ -71,9 +72,7 @@ export default {
       this.selectedCategory = this.categoryList[categoryRandom];
       //a words tömbből a hossza alapján sorsolt kategórián belül sorsolok egy szót is
       this.selectedWord = words[categoryRandom][this.random(words[categoryRandom].length)];
-
-      //keresett szó és kategória
-      console.log('Kategória: ', this.selectedCategory, 'Szó: ', this.selectedWord);
+      //console.log('Kategória: ', this.selectedCategory, 'Szó: ', this.selectedWord);
 
       this.selectedWordLetters = Array(this.selectedWord.length).fill(null);
     },
@@ -107,7 +106,6 @@ export default {
           }, 2000);
         }
       }
-      
       this.hasWon = this.wonCheck(this.selectedWord, this.selectedWordLetters);
       if (this.hasWon) {
         this.wintext = 'Gratulálok, kitaláltad!';
@@ -145,6 +143,7 @@ export default {
 }
 
 .letter-container {
+  height: 165px;
   width: 500px;
   display: flex;
   flex-direction: row;
