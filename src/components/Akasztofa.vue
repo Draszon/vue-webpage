@@ -1,19 +1,25 @@
 <template>
   <h2>Kategória: {{ selectedCategory }}</h2>
+
   <div class="the-word" style="margin-bottom: -10px;">
     <p v-for="(x, index) in selectedWordLetters" style="height: 21px;">{{ x }}</p>
   </div>
+
   <div class="the-word" style="margin-top: -5px;">
     <p v-for="x in selectedWord">_</p>
   </div>
+
   <div class="letter-container">
     <input
       v-if="!hasWon && wrongGuesses <= 6" 
-      v-for="(letter, index) in letters"
-      @click="game(letter, index)"
-      type="button" :value="letter">
+      v-for="(x, index) in letters"
+      @click="game(x, index)"
+      :class="{ 'used-letter': x }"
+      type="button" :value="index">
   </div>
+
   <h3 class="win-text">{{ wintext }}</h3>
+
   <div class="hangman-container">
     <img v-if="wrongGuesses != null" :src="theHangMan[wrongGuesses]" alt="akasztófa kép">
   </div>
@@ -42,13 +48,14 @@
 export default {
   data() {
     return {
-      letters: [
-        'a', 'á', 'b', 'c', 'd', 'e',
-        'é', 'f', 'g', 'h', 'i', 'í', 'j', 'k', 'l',
-        'm', 'n', 'o', 'ó', 'ö', 'ő', 'p', 'q',
-        'r', 's', 't', 'u', 'ú', 'ü', 'ű', 'v',
-        'w', 'x', 'y', 'z'
-      ],
+      letters: {
+        'a': false, 'á': false, 'b': false, 'c': false, 'd': false, 'e': false,
+        'é': false, 'f': false, 'g': false, 'h': false, 'i': false, 'í': false,
+        'j': false, 'k': false, 'l': false, 'm': false, 'n': false, 'o': false, 
+        'ó': false, 'ö': false, 'ő': false, 'p': false, 'q': false, 'r': false,
+        's': false, 't': false, 'u': false, 'ú': false, 'ü': false, 'ű': false,
+        'v': false, 'w': false, 'x': false, 'y': false, 'z': false
+      },
       theHangMan: [
         '/hangman/1.png', '/hangman/2.png', '/hangman/3.png', '/hangman/4.png', '/hangman/5.png', '/hangman/6.png', 
         '/hangman/7.png', '/hangman/8.png' 
@@ -63,19 +70,25 @@ export default {
     }
   },
   methods: {
-    random(num) { //random szám generálása megadott paraméter alapján
+    //random szám generálása megadott paraméter alapján
+    random(num) {
       return Math.floor(Math.random() * num);
     },
+
     generateWord() {
       const categoryRandom = this.random(this.categoryList.length);
+
       //kategória és szó sorsolása a játék elején
       this.selectedCategory = this.categoryList[categoryRandom];
+
       //a words tömbből a hossza alapján sorsolt kategórián belül sorsolok egy szót is
       this.selectedWord = words[categoryRandom][this.random(words[categoryRandom].length)];
       //console.log('Kategória: ', this.selectedCategory, 'Szó: ', this.selectedWord);
 
+      //feltölti annyi null értékkel amennyi a választott szó hossza
       this.selectedWordLetters = Array(this.selectedWord.length).fill(null);
     },
+
     //megkapja a két listát és összehasonlítja minden elemét hogy azonosak-e
     //ha igen akkor igazat ad vissza és kitalálta a játékos
     wonCheck(word, list) {
@@ -86,35 +99,52 @@ export default {
       }
       return true;
     },
-    game(letter, index) {
-      this.letters.splice(index, 1);
-      //a játékos által kattintott betű szerepel a szóban, akkor hozzáadja
-      //a selectedWordLetters listához az adott helyre ahol szerepelnie kell
-      //ami utána kiíratódik a kijelzőre
-      if (this.selectedWord.includes(letter)) {
-        for (let i = 0; i < this.selectedWord.length; i++) {
-          if (letter === this.selectedWord[i]) {
-            this.selectedWordLetters[i] = letter;
+
+    resetGame() {
+      this.generateWord();
+      this.hasWon = false;
+      this.wintext = '';
+      this.wrongGuesses = null;
+      for (let key in this.letters) {
+        if (this.letters.hasOwnProperty(key)) {
+          this.letters[key] = false;
+        }
+      }
+    },
+
+    game(used, letter) {
+      //ha a betűre még nem kattintottak
+      if (!used) {
+        if (this.selectedWord.includes(letter)) {
+          for (let i = 0; i < this.selectedWord.length; i++) {
+            if (letter === this.selectedWord[i]) {
+              this.selectedWordLetters[i] = letter;
+            }
+          }
+        } else {
+          this.wrongGuesses++;
+          if (this.wrongGuesses === 7) {
+            this.wintext = "A kitalálandó szó: " + this.selectedWord + " lett volna.";
+            setTimeout(() => {
+              this.resetGame();
+            }, 2000);
           }
         }
-      } else {
-        this.wrongGuesses++;
-        if (this.wrongGuesses === 7) {
-          this.wintext = "A kitalálandó szó: " + this.selectedWord + " lett volna.";
+
+        //ha már egyszer kattintott egy betűre, az értéke igaz lesz, többször nem lehet
+        this.letters[letter] = !this.letters[letter];
+
+        this.hasWon = this.wonCheck(this.selectedWord, this.selectedWordLetters);
+        if (this.hasWon) {
+          this.wintext = 'Gratulálok, kitaláltad!';
           setTimeout(() => {
-            location.reload();
+            this.resetGame();
           }, 2000);
         }
       }
-      this.hasWon = this.wonCheck(this.selectedWord, this.selectedWordLetters);
-      if (this.hasWon) {
-        this.wintext = 'Gratulálok, kitaláltad!';
-        setTimeout(() => {
-          location.reload();
-        }, 2000);
-      }
     },
   },
+  
   mounted() {
     this.generateWord();
   }
@@ -122,6 +152,10 @@ export default {
 </script>
 
 <style scoped>
+.used-letter {
+  color: red !important;
+}
+
 .win-text {
   height: 21px;
   margin: 10px 0;
@@ -167,6 +201,7 @@ export default {
   border-radius: 5px;
   font-weight: 700;
 }
+
 .hangman-container { height: 305px; }
 .hangman-container img { height: 300px; }
 
