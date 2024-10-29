@@ -18,6 +18,10 @@
       type="button" :value="index">
   </div>
 
+  <input
+    class="new-game-btn" type="button" value="Új játék"
+    v-if="endGame" @click="resetGame">
+
   <h3 class="win-text">{{ wintext }}</h3>
 
   <div class="hangman-container">
@@ -29,11 +33,14 @@
   const words = [
     [
       'alma', 'körte', 'banán', 'narancs', 'szilva', 'eper',
-      'ananász', 'mangó', 'szőlő', 'grépfrút'
+      'ananász', 'mangó', 'szőlő', 'grépfrút', 'őszibarack', 'citrom',
+      'gránátalma', 'cseresznye', 'málna', 'kiwi', 'ananász', 'dinnye',
+      'kókuszdió', 'papaya', 'maracuja', 'füge',
     ],
     [
-      'audi', 'bmw', 'mercedes', 'ford', 'tesla', 'volkswagen',
-      'toyota', 'honda', 'porsche', 'ferrari'
+      'ford', 'toyota', 'bmw', 'audi', 'mercedes', 'honda', 'volkswagen', 'mazda',
+      'tesla', 'nissan', 'chevrolet', 'subaru', 'kia', 'hyundai', 'volvo', 'porsche',
+      'fiat', 'jeep', 'peugeot',
     ],
     [
       'kanapé', 'fotel', 'íróasztal', 'ágy', 'étkezőasztal',
@@ -65,6 +72,7 @@ export default {
       selectedWord: '',
       selectedWordLetters: [],
       hasWon: false,
+      endGame: false,
       wintext: '',
       wrongGuesses: null,
     }
@@ -102,6 +110,7 @@ export default {
 
     resetGame() {
       this.generateWord();
+      this.endGame = false;
       this.hasWon = false;
       this.wintext = '';
       this.wrongGuesses = null;
@@ -125,9 +134,7 @@ export default {
           this.wrongGuesses++;
           if (this.wrongGuesses === 7) {
             this.wintext = "A kitalálandó szó: " + this.selectedWord + " lett volna.";
-            setTimeout(() => {
-              this.resetGame();
-            }, 2000);
+            this.endGame = !this.endGame;
           }
         }
 
@@ -137,9 +144,7 @@ export default {
         this.hasWon = this.wonCheck(this.selectedWord, this.selectedWordLetters);
         if (this.hasWon) {
           this.wintext = 'Gratulálok, kitaláltad!';
-          setTimeout(() => {
-            this.resetGame();
-          }, 2000);
+          this.endGame = !this.endGame;
         }
       }
     },
@@ -152,6 +157,12 @@ export default {
 </script>
 
 <style scoped>
+.new-game-btn {
+  padding: 5px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
 .used-letter {
   color: red !important;
 }

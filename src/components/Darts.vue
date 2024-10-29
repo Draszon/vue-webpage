@@ -1,11 +1,13 @@
 <template>
 <div class="scoreboard">
   <h2 class="board-title">scoreboard</h2>
+
   <div class="scores-wrapper">
     <div class="names">
       <h3 :class="{ 'current-player': firstPlayerRound }" class="player-name">{{ players.firstPlayer.name }}</h3>
       <h3 :class="{ 'current-player': !firstPlayerRound }" class="player-name">{{ players.secondPlayer.name }}</h3>
     </div>
+
     <div class="score">
       <ul class="player-score">
         <li v-for="score in players.firstPlayer.scoreList"> {{ score }}</li>
@@ -16,6 +18,7 @@
       </ul>
     </div>
   </div>
+
   <div class="sum-wrapper">
     <p>{{ players.firstPlayer.score }}</p>
     <p>{{ players.secondPlayer.score }}</p>
@@ -77,6 +80,7 @@ export default {
         this.firstPlayerRound = !this.firstPlayerRound;
       }
     },
+
     //játék kezdésekor ellenőrzi megadott adatokat, hogy
     //megfelelnek-e a szabályoknak
     startValidation() {
@@ -91,6 +95,9 @@ export default {
         this.players.secondPlayer.score = this.gameType;
       }
     },
+
+    //a kapott értéket megnézi van-e az elején betű, ha igen akkor
+    //duplázza vagy triplázza az értéket és vissza adj a betű nélküli pontot
     parseScore(score) {
       let multiplier = 1;
       if (score[0] === 'd') {
@@ -102,43 +109,72 @@ export default {
       }
       return parseInt(score.slice(1)) * multiplier;
     },
+
     playerScore(first, second, third) {
       return this.parseScore(first) + this.parseScore(second) + this.parseScore(third);
     },
+
     scoreFieldReset() {
       this.firstScore = null;
       this.secondScore = null;
       this.thirdScore = null;
     },
+
+    winCheck(score, player) {
+      if (score === 0) {
+        alert("Gratulálok " + player + " megnyerted a játékot!");
+        this.resetGame();
+      }
+    },
+
     updateScore(score) {
       if (this.firstPlayerRound) {
         const pScore = this.players.firstPlayer.score - score;
+
         if (pScore < 0) {
           this.players.firstPlayer.score = this.players.firstPlayer.score;
           this.players.firstPlayer.scoreList.push(0);
         } else {
           this.players.firstPlayer.score = pScore;
           this.players.firstPlayer.scoreList.push(score);
-          if (pScore === 0) {
-            alert("Gratulálok " + this.players.firstPlayer.name + " megnyerted a játékot!");
-            location.reload();
-          }
+
+          this.winCheck(pScore, this.players.firstPlayer.name);
         }
       } else if (!this.firstPlayerRound) {
         const pScore = this.players.secondPlayer.score - score;
+
         if (pScore < 0) {
           this.players.secondPlayer.score = this.players.secondPlayer.score;
           this.players.secondPlayer.scoreList.push(0);
         } else {
           this.players.secondPlayer.score = pScore;
           this.players.secondPlayer.scoreList.push(score);
-          if (pScore === 0) {
-            alert("Gratulálok " + this.players.secondPlayer.name + " megnyerted a játékot!");
-            location.reload();
-          }
+          
+          this.winCheck(pScore, this.players.secondPlayer.name);
         }
       }
-      
+    },
+
+    resetGame() {
+      this.gameType = null,
+      this.started = false,
+      this.error = '',
+      this.firstScore = null,
+      this.secondScore = null,
+      this.thirdScore = null,
+      this.firstPlayerRound = true,
+      this.players = {
+        firstPlayer: {
+          name: '',
+          score: 0,
+          scoreList: []
+        },
+        secondPlayer: {
+          name: '',
+          score: 0,
+          scoreList: []
+        }
+      }
     }
   }
 }
