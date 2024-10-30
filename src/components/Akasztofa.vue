@@ -1,12 +1,16 @@
 <template>
-  <h2>Kategória: {{ selectedCategory }}</h2>
+  <h2 v-if="selectedWord">Kategória: {{ selectedWord.category }}</h2>
 
   <div class="the-word" style="margin-bottom: -10px;">
+    <!--a kattintott betűket helyezi be a megfelelő helyre-->
     <p v-for="(x, index) in selectedWordLetters" style="height: 21px;">{{ x }}</p>
   </div>
 
   <div class="the-word" style="margin-top: -5px;">
-    <p v-for="x in selectedWord">_</p>
+    <!--a kitalálandó szó szószámával megegyező mennyiségű _ rajzol ki-->
+    <p
+      v-if="selectedWord"
+      v-for="x in selectedWord.word">_</p>
   </div>
 
   <div class="letter-container">
@@ -18,8 +22,17 @@
       type="button" :value="index">
   </div>
 
+  <!--segítség kérő gomb, akkor látszódik ha nincs vége
+  a játéknagy, vagy nem kattintott még rá, amúgy pedig a 
+  vélasztott szóhoz tartozó 3db segítségből egy randomat kiírat-->
+  <input class="btn" style="margin-bottom: 5px;" type="button" value="Segítség"
+    v-if="!needHelp && !endGame"
+    @click="needHelp = !needHelp; helpText = selectedWord.helper[Math.floor(Math.random() * 3)];">
+
+  <p class="btn" v-if="selectedWord && !endGame">{{ helpText }}</p>
+
   <input
-    class="new-game-btn" type="button" value="Új játék"
+    class="btn" type="button" value="Új játék"
     v-if="endGame" @click="resetGame">
 
   <h3 class="win-text">{{ wintext }}</h3>
@@ -30,31 +43,11 @@
 </template>
 
 <script>
-  const words = [
-    [
-      'alma', 'körte', 'banán', 'narancs', 'szilva', 'eper',
-      'ananász', 'mangó', 'szőlő', 'grépfrút', 'őszibarack', 'citrom',
-      'gránátalma', 'cseresznye', 'málna', 'kiwi', 'ananász', 'dinnye',
-      'kókuszdió', 'papaya', 'maracuja', 'füge',
-    ],
-    [
-      'ford', 'toyota', 'bmw', 'audi', 'mercedes', 'honda', 'volkswagen', 'mazda',
-      'tesla', 'nissan', 'chevrolet', 'subaru', 'kia', 'hyundai', 'volvo', 'porsche',
-      'fiat', 'jeep', 'peugeot',
-    ],
-    [
-      'kanapé', 'fotel', 'íróasztal', 'ágy', 'étkezőasztal',
-      'könyvespolc', 'komód', 'ruhásszekrény', 'éjjeliszekrény', 'kávézóasztal'
-    ],
-    [
-      'rózsa', 'napraforgó', 'tulipán', 'levendula', 'jázmin',
-      'ciklámen', 'pálmafa', 'borostyán', 'kaktusz', 'tátika'
-    ]
-  ];
 
 export default {
   data() {
     return {
+      wordList: null,
       letters: {
         'a': false, 'á': false, 'b': false, 'c': false, 'd': false, 'e': false,
         'é': false, 'f': false, 'g': false, 'h': false, 'i': false, 'í': false,
@@ -67,40 +60,36 @@ export default {
         '/hangman/1.png', '/hangman/2.png', '/hangman/3.png', '/hangman/4.png', '/hangman/5.png', '/hangman/6.png', 
         '/hangman/7.png', '/hangman/8.png' 
       ],
-      categoryList: ['gyümölcs', 'autó', 'bútor', 'növény'],
-      selectedCategory: '',
-      selectedWord: '',
+      selectedWord: null,
       selectedWordLetters: [],
       hasWon: false,
       endGame: false,
       wintext: '',
       wrongGuesses: null,
+      needHelp: false,
+      helpText: ''
     }
   },
   methods: {
-    //random szám generálása megadott paraméter alapján
-    random(num) {
-      return Math.floor(Math.random() * num);
+    async fetchData() {
+      try {
+        const response = await fetch("/hangman/words.json");
+        this.wordList = await response.json();
+      } catch (error) {
+        console.error('Hiba a szavak betöltésekor: ', error);
+      }
     },
 
     generateWord() {
-      const categoryRandom = this.random(this.categoryList.length);
-
-      //kategória és szó sorsolása a játék elején
-      this.selectedCategory = this.categoryList[categoryRandom];
-
-      //a words tömbből a hossza alapján sorsolt kategórián belül sorsolok egy szót is
-      this.selectedWord = words[categoryRandom][this.random(words[categoryRandom].length)];
-      //console.log('Kategória: ', this.selectedCategory, 'Szó: ', this.selectedWord);
-
-      //feltölti annyi null értékkel amennyi a választott szó hossza
-      this.selectedWordLetters = Array(this.selectedWord.length).fill(null);
+      const randomNum = Math.floor(Math.random() * this.wordList.words.length);
+      this.selectedWord = this.wordList.words[randomNum];
+      this.selectedWordLetters = Array(this.selectedWord.word.length).fill(null);
     },
 
     //megkapja a két listát és összehasonlítja minden elemét hogy azonosak-e
     //ha igen akkor igazat ad vissza és kitalálta a játékos
     wonCheck(word, list) {
-      for (let i = 0; i <= this.selectedWord.length; i++) {
+      for (let i = 0; i <= this.selectedWord.word.length; i++) {
         if (word[i] !== list[i]){
           return false;
         }
@@ -114,6 +103,8 @@ export default {
       this.hasWon = false;
       this.wintext = '';
       this.wrongGuesses = null;
+      this.helpText = '';
+      this.needHelp = false;
       for (let key in this.letters) {
         if (this.letters.hasOwnProperty(key)) {
           this.letters[key] = false;
@@ -124,16 +115,16 @@ export default {
     game(used, letter) {
       //ha a betűre még nem kattintottak
       if (!used) {
-        if (this.selectedWord.includes(letter)) {
-          for (let i = 0; i < this.selectedWord.length; i++) {
-            if (letter === this.selectedWord[i]) {
+        if (this.selectedWord.word.includes(letter)) {
+          for (let i = 0; i < this.selectedWord.word.length; i++) {
+            if (letter === this.selectedWord.word[i]) {
               this.selectedWordLetters[i] = letter;
             }
           }
         } else {
           this.wrongGuesses++;
           if (this.wrongGuesses === 7) {
-            this.wintext = "A kitalálandó szó: " + this.selectedWord + " lett volna.";
+            this.wintext = "A kitalálandó szó: " + this.selectedWord.word + " lett volna.";
             this.endGame = !this.endGame;
           }
         }
@@ -141,7 +132,7 @@ export default {
         //ha már egyszer kattintott egy betűre, az értéke igaz lesz, többször nem lehet
         this.letters[letter] = !this.letters[letter];
 
-        this.hasWon = this.wonCheck(this.selectedWord, this.selectedWordLetters);
+        this.hasWon = this.wonCheck(this.selectedWord.word, this.selectedWordLetters);
         if (this.hasWon) {
           this.wintext = 'Gratulálok, kitaláltad!';
           this.endGame = !this.endGame;
@@ -150,14 +141,15 @@ export default {
     },
   },
   
-  mounted() {
+  async mounted() {
+    await this.fetchData();
     this.generateWord();
   }
 }
 </script>
 
 <style scoped>
-.new-game-btn {
+.btn {
   padding: 5px 20px;
   font-size: 1rem;
   cursor: pointer;
@@ -216,5 +208,8 @@ export default {
 .hangman-container { height: 305px; }
 .hangman-container img { height: 300px; }
 
-@media (max-width: 425px) { .letter-container { width: 370px; } }
+@media (max-width: 425px) { 
+  .letter-container { width: 370px; }
+  .btn { margin-top: 30px; }  
+}
 </style>

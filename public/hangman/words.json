@@ -1,0 +1,40 @@
+{
+  "words": [
+    {
+      "word": "alma",
+      "category": "gyümölcs",
+      "helper": [
+        "Általában piros.",
+        "Fán terem.",
+        "Leginkább édes."
+      ]
+    },
+    {
+      "word": "körte",
+      "category": "gyümölcs",
+      "helper": [
+        "Gyümölcs húsa: sárgásfehér",
+        "Fán terem.",
+        "Lédús, kellemes fanyar, édes ízű."
+      ]
+    },
+    {
+      "word": "banán",
+      "category": "gyümölcs",
+      "helper": [
+        "Többnyire 10-15 cm hosszú.",
+        "Zöldessárga gyümölcsök közös száron helyezkednek el.",
+        "Hajlott, sokszögletű."
+      ]
+    },
+    {
+      "word": "narancs",
+      "category": "gyümölcs",
+      "helper": [
+        "Déligyümölcs a citrusformák alcsaládjából.",
+        "Jellegzetes sárga színű.",
+        "A külső héj illóolajat, keserűanyagot tartalmaz."
+      ]
+    }
+  ]
+}
