@@ -4,36 +4,360 @@
       "word": "alma",
       "category": "gyümölcs",
       "helper": [
-        "Általában piros.",
-        "Fán terem.",
-        "Leginkább édes."
+        "Gömbölyded alakú, színe lehet zöld, piros vagy sárga.",
+        "Magházában találhatóak a barna magok",
+        "Sokszor mondják, hogy naponta egy, és az orvost távol tartja."
       ]
     },
     {
       "word": "körte",
       "category": "gyümölcs",
       "helper": [
-        "Gyümölcs húsa: sárgásfehér",
-        "Fán terem.",
-        "Lédús, kellemes fanyar, édes ízű."
+        "Hosszúkás vagy „körte” alakú, és lehet zöld vagy sárgás színű.",
+        "Belseje ropogós vagy lédús, fajtától függően.",
+        "Magháza és néhány apró mag található benne."
       ]
     },
     {
       "word": "banán",
       "category": "gyümölcs",
       "helper": [
-        "Többnyire 10-15 cm hosszú.",
-        "Zöldessárga gyümölcsök közös száron helyezkednek el.",
-        "Hajlott, sokszögletű."
+        "Hosszúkás alakú, és amikor érett, élénk sárga.",
+        "Könnyen hámozható, és a belseje puha, krémes állagú.",
+        "Gyakran sportolók választják gyors energiaforrásként."
       ]
     },
     {
       "word": "narancs",
       "category": "gyümölcs",
       "helper": [
-        "Déligyümölcs a citrusformák alcsaládjából.",
-        "Jellegzetes sárga színű.",
-        "A külső héj illóolajat, keserűanyagot tartalmaz."
+        "Kerek és narancssárga héja van, ami könnyen leválasztható.",
+        "Lédús és szegmensekre osztható belső része van.",
+        "Gyakran készítenek belőle friss gyümölcslevet."
+      ]
+    },
+    {
+      "word": "szőlő",
+      "category": "gyümölcs",
+      "helper": [
+        "Kis, bogyós gyümölcs, amit fürtökben találunk.",
+        "Színe lehet zöld, piros vagy sötétlila.",
+        "Gyakran készítenek belőle bort."
+      ]
+    },
+    {
+      "word": "eper",
+      "category": "gyümölcs",
+      "helper": [
+        "Piros, szív alakú gyümölcs, apró magokkal a felszínén.",
+        "Illatos és édes, gyakran desszertekhez használják.",
+        "A tavasz egyik legkedveltebb gyümölcse."
+      ]
+    },
+    {
+      "word": "citrom",
+      "category": "gyümölcs",
+      "helper": [
+        "Sárga, ovális gyümölcs, ami nagyon savanyú ízű.",
+        "Gyakran használják italok ízesítésére vagy teába.",
+        "Nagyon magas a C-vitamin-tartalma."
+      ]
+    },
+    {
+      "word": "ananász",
+      "category": "gyümölcs",
+      "helper": [
+        "Nagy, tüskés héjú gyümölcs, amelynek belseje sárga és lédús.",
+        "Trópusi ízű, édes-savanykás.",
+        "Sokszor kell meghámozni és szeletelni, mielőtt fogyaszthatóvá válik."
+      ]
+    },
+    {
+      "word": "görögdinnye",
+      "category": "gyümölcs",
+      "helper": [
+        "Nagy, zöld héjú gyümölcs, belseje piros és fekete magok vannak benne.",
+        "Nyáron hűsítő, mert rendkívül magas a víztartalma.",
+        "Szeletelve könnyen fogyasztható, és gyakran piknikek kedvence."
+      ]
+    },
+    {
+      "word": "málna",
+      "category": "gyümölcs",
+      "helper": [
+        "Apró, puha, piros bogyó, amely sok apró „szemecskéből” áll.",
+        "Édeskés íze van, de egy kis savassággal.",
+        "Gyakran használják süteményekben és turmixokban."
+      ]
+    },
+    {
+      "word": "tesla",
+      "category": "autó",
+      "helper": [
+        "Teljesen elektromos meghajtású járműveket gyárt.",
+        "Jellemző rá a minimalista belső tér és a nagy központi érintőképernyő.",
+        "Az „Autopilot” önvezető funkciójáról híres."
+      ]
+    },
+    {
+      "word": "bmw",
+      "category": "autó",
+      "helper": [
+        "Sportos és prémium minőségű autókat gyárt, vezetési élményre fókuszálva.",
+        "A jellegzetes „vese” alakú hűtőrácsával könnyen felismerhető.",
+        "Német mérnöki precizitás és luxus kombinációja."
+      ]
+    },
+    {
+      "word": "toyota",
+      "category": "autó",
+      "helper": [
+        "Híres a megbízhatóságáról és hosszú élettartamú motorjairól.",
+        "A hibrid technológiájával vezető szerepet tölt be.",
+        "Népszerű választás családi autóknak és városi közlekedésre."
+      ]
+    },
+    {
+      "word": "mercedes",
+      "category": "autó",
+      "helper": [
+        "Luxusautóiról és innovatív technológiáiról ismert.",
+        "A „háromágú csillag” jelképezi, amit minden modelljén látni lehet.",
+        "Gyakran a kényelem és elegancia szinonimája."
+      ]
+    },
+    {
+      "word": "ford",
+      "category": "autó",
+      "helper": [
+        "Az egyik legrégebbi autómárka, híresen megfizethető és sokoldalú.",
+        "Az első sorozatgyártású autó, a Model T is az ő nevükhöz fűződik.",
+        "Széles választékú autói vannak, városi és terepjáró típusokkal."
+      ]
+    },
+    {
+      "word": "volkswagen",
+      "category": "autó",
+      "helper": [
+        "Népszerű népautókat gyárt, amelyek mindennapi használatra tökéletesek.",
+        "Ikonikus modelljei, mint a Golf és a Beetle, világszerte ismertek.",
+        "Megbízható és jó ár-érték arányú autókat kínál."
+      ]
+    },
+    {
+      "word": "audi",
+      "category": "autó",
+      "helper": [
+        "Német prémium márka, amely elegáns és sportos járműveket készít.",
+        "Könnyen felismerhető a „négy karika” logójáról.",
+        "Számos modelljük összkerékmeghajtással készül, ami a „quattro” technológia neve alatt fut."
+      ]
+    },
+    {
+      "word": "ferrari",
+      "category": "autó",
+      "helper": [
+        "Luxus sportautókat gyárt, amelyek piros színe és sebessége legendás.",
+        "Az „ugró ló” logó a márka jelképe.",
+        "Kiváló teljesítmény és exkluzív dizájn jellemzi."
+      ]
+    },
+    {
+      "word": "honda",
+      "category": "autó",
+      "helper": [
+        "Megbízható és tartós autókat készít, amelyek kis karbantartási igényűek.",
+        "Sok városi és kompakt modellje van, amelyeket világszerte használnak.",
+        "Ismert a motorfejlesztési újításairól és hibrid modelljeiről."
+      ]
+    },
+    {
+      "word": "lamborghini",
+      "category": "autó",
+      "helper": [
+        "Az extrém, futurisztikus formaterveiről és erős sportautóiról híres.",
+        "Modellei gyakran „bika” neveket viselnek.",
+        "Ikonikus ajtónyitási módja, amikor felfelé nyílnak, még inkább figyelemfelkeltővé teszi."
+      ]
+    },
+    {
+      "word": "rózsa",
+      "category": "növény",
+      "helper": [
+        "Szára tüskékkel borított, virága sokféle színben létezik.",
+        "Az egyik legnépszerűbb virág ajándékozáshoz.",
+        "Az illata jellegzetes és gyakran használják parfümökben."
+      ]
+    },
+    {
+      "word": "napraforgó",
+      "category": "növény",
+      "helper": [
+        "Magas, sárga szirmai körben helyezkednek el, közepén barna magház van.",
+        "Követi a nap járását, mindig a nap felé fordul.",
+        "Magját gyakran használják olaj készítéséhez és nassolnivalónak."
+      ]
+    },
+    {
+      "word": "levendula",
+      "category": "növény",
+      "helper": [
+        "Lila virágai vannak, és erős, nyugtató illatot áraszt.",
+        "Gyakran használják illóolajokban és aromaterápiában.",
+        "Szárítva sokáig megőrzi illatát, ezért illatosítókban is népszerű."
+      ]
+    },
+    {
+      "word": "kaktusz",
+      "category": "növény",
+      "helper": [
+        "Száraz, sivatagos területeken őshonos, és tüskéi vannak levelek helyett.",
+        "Víztartó szövetei miatt hosszú ideig kibírja víz nélkül.",
+        "Sok fajtája van, némelyik virágot is hoz."
+      ]
+    },
+    {
+      "word": "bambusz",
+      "category": "növény",
+      "helper": [
+        "Üreges, gyorsan növő szára van, amely a fűfélék családjába tartozik.",
+        "Nagyon erős, ezért gyakran használják építőanyagként.",
+        "A panda egyik fő tápláléka."
+      ]
+    },
+    {
+      "word": "tulipán",
+      "category": "növény",
+      "helper": [
+        "Tavaszi virág, amely egyszerű, kehely alakú virággal rendelkezik.",
+        "Hollandia szimbóluma, ahol hatalmas mezőkön termesztik.",
+        "Számos színben kapható, a piros, sárga és rózsaszín a leggyakoribb."
+      ]
+    },
+    {
+      "word": "páfrány",
+      "category": "növény",
+      "helper": [
+        "Árnyékos, párás környezetet kedvel, levelei gyakran ívelt alakúak.",
+        "Nincsenek virágai vagy magjai; spórákkal szaporodik.",
+        "A levelei csomókban nőnek és gyakran csipkés, finom szerkezetűek."
+      ]
+    },
+    {
+      "word": "orchidea",
+      "category": "növény",
+      "helper": [
+        "Elegáns, egzotikus megjelenésű virág, sokféle színben és formában.",
+        "Hosszú élettartamú virágokat hoz, amelyek hónapokig nyílnak.",
+        "Különleges gyökérzetével gyakran fákon él, nem közvetlenül a talajban."
+      ]
+    },
+    {
+      "word": "jázmin",
+      "category": "növény",
+      "helper": [
+        "Apró, fehér vagy sárga virágai vannak, amelyek édes illatot árasztanak.",
+        "Az illata miatt sok parfüm és tea alapanyaga.",
+        "Melegebb éghajlatot kedvel, és gyakran futónövényként ültetik."
+      ]
+    },
+    {
+      "word": "borsmenta",
+      "category": "növény",
+      "helper": [
+        "Fűszeres, hűsítő illata van, amit a leveleiből lehet érezni.",
+        "Gyakran használják teákban és ételek ízesítésére.",
+        "Illóolaj formájában is népszerű, és nyugtató hatása van az emésztésre."
+      ]
+    },
+    {
+      "word": "oroszlán",
+      "category": "állat",
+      "helper": [
+        "Az afrikai szavannák uralkodó ragadozója, híres sörényéről.",
+        "Szociális állat, és falkákban él.",
+        "Az erő és bátorság szimbóluma sok kultúrában."
+      ]
+    },
+    {
+      "word": "zsiráf",
+      "category": "állat",
+      "helper": [
+        "A világ legmagasabb szárazföldi állata, hosszú nyakával.",
+        "A fák leveleit és ágait eszi, különösen a akáciát.",
+        "Jellemzője a foltos bundája, ami segít a rejtőzködésben."
+      ]
+    },
+    {
+      "word": "delfin",
+      "category": "állat",
+      "helper": [
+        "Intelligens tengeri emlős, amely híres a játékosságáról.",
+        "Kommunikál egymással különböző hangokkal és jelzésekkel.",
+        "Szociális állatok, gyakran csapatokban úsznak."
+      ]
+    },
+    {
+      "word": "elefánt",
+      "category": "állat",
+      "helper": [
+        "A legnagyobb szárazföldi állat, híres hatalmas füleiről és ormányáról.",
+        "Szociális lény, családi csoportokban él.",
+        "Az emlékezet és intelligencia szimbóluma, különösen a vándorlásaik során."
+      ]
+    },
+    {
+      "word": "kenguru",
+      "category": "állat",
+      "helper": [
+        "Ausztrália ikonikus állata, amely erőteljes hátsó lábaival ugrik.",
+        "A nőstény kenguru pocakjában hordja a kis kengurukat.",
+        "Főként fűfélékkel táplálkozik, és társas lény."
+      ]
+    },
+    {
+      "word": "tigris",
+      "category": "állat",
+      "helper": [
+        "Az egyik legnagyobb macskaféle, jellegzetes csíkos bundájával.",
+        "Magányos vadász, aki titokban közelíti meg áldozatait.",
+        "Az erő és a szépség szimbóluma sok kultúrában."
+      ]
+    },
+    {
+      "word": "fóka",
+      "category": "állat",
+      "helper": [
+        "Tengeri emlősök, amelyek úszni tudnak, de szárazföldön is élnek.",
+        "Jellemző a sima, zsíros bőrük és a fokaik.",
+        "Gyakran játszanak a vízben, és a jégen is pihennek."
+      ]
+    },
+    {
+      "word": "kígyó",
+      "category": "állat",
+      "helper": [
+        "Hosszú, hüllőszerű állat, amely különböző méretben és színben létezik.",
+        "Nincsenek lábai, és a testével csúszik.",
+        "Egyes fajok mérgezőek, míg mások ártalmatlanok."
+      ]
+    },
+    {
+      "word": "pingvin",
+      "category": "állat",
+      "helper": [
+        "Repülni nem tudó madár, amely főként a déli féltekén él.",
+        "Különleges úszási technikákkal rendelkezik, és gyakran csoportokban mozog.",
+        "Az éghajlati viszonyokhoz jól alkalmazkodik, és a jégen is boldogul."
+      ]
+    },
+    {
+      "word": "kacsa",
+      "category": "állat",
+      "helper": [
+        "Vízpartokon élő vízimadár, amely jól úszik és repül.",
+        "Színes tollazata és vidám quackolása jellemzi.",
+        "Különböző élőhelyeken megtalálható, beleértve a tavakat és folyókat."
       ]
     }
   ]

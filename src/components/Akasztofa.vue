@@ -60,6 +60,10 @@ export default {
         '/hangman/1.png', '/hangman/2.png', '/hangman/3.png', '/hangman/4.png', '/hangman/5.png', '/hangman/6.png', 
         '/hangman/7.png', '/hangman/8.png' 
       ],
+      messages: {
+        win: "Gratulálok kitaláltad!",
+        loose: (word) => `A kitalálandó szó: ${word} lett volna!`
+      },
       selectedWord: null,
       selectedWordLetters: [],
       hasWon: false,
@@ -84,6 +88,7 @@ export default {
       const randomNum = Math.floor(Math.random() * this.wordList.words.length);
       this.selectedWord = this.wordList.words[randomNum];
       this.selectedWordLetters = Array(this.selectedWord.word.length).fill(null);
+      console.log(this.selectedWord.word);
     },
 
     //megkapja a két listát és összehasonlítja minden elemét hogy azonosak-e
@@ -124,7 +129,7 @@ export default {
         } else {
           this.wrongGuesses++;
           if (this.wrongGuesses === 7) {
-            this.wintext = "A kitalálandó szó: " + this.selectedWord.word + " lett volna.";
+            this.wintext = this.messages.loose(this.selectedWord.word);
             this.endGame = !this.endGame;
           }
         }
@@ -134,7 +139,7 @@ export default {
 
         this.hasWon = this.wonCheck(this.selectedWord.word, this.selectedWordLetters);
         if (this.hasWon) {
-          this.wintext = 'Gratulálok, kitaláltad!';
+          this.wintext = this.messages.win;
           this.endGame = !this.endGame;
         }
       }
