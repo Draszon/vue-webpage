@@ -44,7 +44,7 @@ const router = createRouter({
       path: '/darts',
       name: 'darts',
       component: DartsView
-    },
+    }
   ]
 })
 

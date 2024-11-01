@@ -88,7 +88,6 @@ export default {
       const randomNum = Math.floor(Math.random() * this.wordList.words.length);
       this.selectedWord = this.wordList.words[randomNum];
       this.selectedWordLetters = Array(this.selectedWord.word.length).fill(null);
-      console.log(this.selectedWord.word);
     },
 
     //megkapja a két listát és összehasonlítja minden elemét hogy azonosak-e
