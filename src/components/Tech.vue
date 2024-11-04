@@ -16,6 +16,7 @@
             v-for="(tech, index) in technologiesList"
             :key="tech.name"
             :style="{ transitionDelay: `${index * .3}s` }">
+            
             <img class="technology-index"
               :src="tech.index"
               alt="vuejs logo">

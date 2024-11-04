@@ -9,25 +9,19 @@
     <div class="container contact-minus">
       <div class="row cont">
 
-        <TransitionGroup
-          name="contacts"
-          tag="div"
-          class="contact-wrapper"
-          ref="contactWrapper">
-
+        <div class="contact-wrapper">
           <a target="_blank" class="contact"
-          v-if="contactList.length > 0 && exists" 
-          v-for="(contact, index) in contactList" 
+          v-if="contactList.length > 0" 
+          v-for="contact in contactList" 
           :href="contact.link"
-          :key="contact.name"
-          :style="{ transitionDelay: `${index * .3}s` }">
+          :key="contact.name">
 
             <img class="contact-icon" :src="contact.index" alt="github ikon">
             <p class="contact-name">{{ contact.name }}</p>
             <p class="contact-link-text">{{ contact.linkText }}</p>
           </a>
-          <!--<div class="error-msg" v-else><p>Nincsenek elérhetőségek!</p></div>-->
-        </TransitionGroup>
+          <div class="error-msg" v-else><p>Nincsenek elérhetőségek!</p></div>
+        </div>
 
       </div>
     </div>
@@ -62,45 +56,13 @@ export default {
           linkText: "github.com/draszon",
           link:"https://github.com/draszon"
         }
-      ],
-      exists: false
-    }
-  },
-  mounted() {
-    window.addEventListener("scroll", this.handleScrolls);
-  },
-  beforeDestroy() {
-    window.removeEventListener("scroll", this.handleScrolls);
-  },
-  methods: {
-    handleScrolls() {
-      const element = this.$refs.contactWrapper;
-      if (element) {
-        const rect = element.getBoundingClientRect();
-        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-
-        if (rect.top <= windowHeight && rect.bottom >= 0) {
-          this.exists = true;
-          console.log(this.exists);
-        }
-      }
+      ]
     }
   }
 }
 </script>
 
 <style scoped>
-.contacts-enter-active {
-  transition: all .5s ease;
-}
-.contacts-enter-from {
-  opacity: 0;
-  transform: translateZ(50px);
-}
-.contacts-enter-to {
-  opacity: 1;
-  transform: translateZ(0);
-}
 
 .contact-minus { margin-top: -8.75rem; }
 #contacts { height: 250px; }
