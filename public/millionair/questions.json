@@ -1,0 +1,114 @@
+{
+  "questions": [
+    {
+      "question": "Melyik ország fővárosa Párizs?",
+      "answers": {
+        "A": "Németország",
+        "B": "Spanyolország",
+        "C": "Franciaország",
+        "D": "Olaszország"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Melyik kontinensen található Argentína?",
+      "answers": {
+        "A": "Európa",
+        "B": "Ázsia",
+        "C": "Afrika",
+        "D": "Dél-Amerika"
+      },
+      "correctAnswer": "D",
+      "exists": true
+    },
+    {
+      "question": "Melyik tudományág foglalkozik az élőlények osztályozásával?",
+      "answers": {
+        "A": "Biológia",
+        "B": "Kémia",
+        "C": "Genetika",
+        "D": "Taxonómia"
+      },
+      "correctAnswer": "D",
+      "exists": true
+    },
+    {
+      "question": "Melyik évben esett le a berlini fal?",
+      "answers": {
+        "A": "1987",
+        "B": "1989",
+        "C": "1991",
+        "D": "1993"
+      },
+      "correctAnswer": "B",
+      "exists": true
+    },
+    {
+      "question": "Ki írta a 'Pál utcai fiúk' című regényt?",
+      "answers": {
+        "A": "Jókai Mór",
+        "B": "Karinthy Frigyes",
+        "C": "Molnár Ferenc",
+        "D": "Móricz Zsigmond"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Melyik bolygó van legközelebb a Naphoz?",
+      "answers": {
+        "A": "Vénusz",
+        "B": "Föld",
+        "C": "Merkúr",
+        "D": "Mars"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Melyik híres tudós alkotta meg a relativitáselméletet?",
+      "answers": {
+        "A": "Isaac Newton",
+        "B": "Albert Einstein",
+        "C": "Galileo Galilei",
+        "D": "Nikola Tesla"
+      },
+      "correctAnswer": "B",
+      "exists": true
+    },
+    {
+      "question": "Melyik magyar költő írta a 'Tiszta szívvel' című verset?",
+      "answers": {
+        "A": "Arany János",
+        "B": "Ady Endre",
+        "C": "József Attila",
+        "D": "Petőfi Sándor"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Melyik ország rendezte a 2016-os nyári olimpiai játékokat?",
+      "answers": {
+        "A": "Egyesült Államok",
+        "B": "Kína",
+        "C": "Brazília",
+        "D": "Japán"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Melyik szín nem része a magyar zászlónak?",
+      "answers": {
+        "A": "Piros",
+        "B": "Fehér",
+        "C": "Zöld",
+        "D": "Kék"
+      },
+      "correctAnswer": "D",
+      "exists": true
+    }
+  ]
+}

@@ -7,14 +7,18 @@
 
       <div class="game-wrapper">
         <div class="question-wrapper">
-          <h3 class="question">Melyik elem található meg legnagyobb mennyiségben a Föld légkörében?</h3>
+          <h3 class="question"
+            v-if="currendQuestion"
+          >{{ currendQuestion.question }}</h3>
         </div>
 
         <div class="answer-wrapper">
-          <input type="button" value="A: Oxigén">
-          <input type="button" value="B: Szén-dioxid">
-          <input type="button" value="C: Nitrogén">
-          <input type="button" value="D: Argon">
+          <input type="button"
+            v-if="currendQuestion"
+            v-for="(answer, index) in currendQuestion.answers" 
+            :key="index"
+            :value="`${index}: ${answer}`"
+          >
         </div>
 
         <div class="help-wrapper">
@@ -29,21 +33,12 @@
       </div>
 
       <div class="money-counter">
-        <p>50.000.000</p>
-        <p>25.000.000</p>
-        <p>15.000.000</p>
-        <p>10.000.000</p>
-        <p>5.000.000</p>
-        <p>50.000.000</p>
-        <p>50.000.000</p>
-        <p>50.000.000</p>
-        <p>50.000.000</p>
-        <p>50.000.000</p>
-        <p>50.000.000</p>
-        <p>50.000.000</p>
-        <p>50.000.000</p>
-        <p>50.000.000</p>
-        <p>50.000.000</p>
+        <p
+          v-for="(price, index) in prices"
+          :key="index"  
+        >
+          {{ price }}
+        </p>
       </div>
     </div>
   </main>
@@ -53,11 +48,34 @@
 export default {
   data() {
     return {
-
+      prices: [
+        '10.000', '20.000', '50.000', '100.000', '250.000',
+        '500.000', '750.000', '1.000.000', '1.500.000', '2.000.000',
+        '5.000.000', '10.000.000', '15.000.000', '25.000.000', '50.000.000'
+      ],
+      questionList: null,
+      currendQuestion: null,
     }
   },
   methods: {
+    async fetchData() {
+      try {
+        const response = await fetch('/millionair/questions.json');
+        this.questionList = await response.json();
+      } catch (error) {
+        console.log('Hiba történt a kérdések betöltése közben: ', error);
+      }
+    },
 
+    game() {
+      //a currentQuestion változóban eltárolja a jelenlegi (random sorsolt)
+      //kérdést és a hozzá tartozó dolgokat
+      this.currendQuestion = this.questionList.questions[Math.floor(Math.random() * this.questionList.questions.length)];
+    }
+  },
+  async mounted() {
+    await this.fetchData();
+    this.game();
   }
 }
 </script>
@@ -72,6 +90,10 @@ main {
   width: 80%;
   margin: 0 auto;
   padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .game-title {
@@ -89,6 +111,7 @@ main {
 }
 
 .answer-wrapper input {
+  width: 250px;
   font-size: 20px;
   background-color: unset;
   color: white;
@@ -140,9 +163,12 @@ main {
 
 .money-counter {
   font-size: 18px;
+  width: 150px;
 }
 
 .money-counter p {
-  margin: 5px 0;
+  font-weight: 600;
+  margin: 6px 0;
+  border-bottom: 1px solid white;
 }
 </style>
