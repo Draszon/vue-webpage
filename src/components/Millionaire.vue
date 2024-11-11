@@ -8,16 +8,18 @@
       <div class="game-wrapper">
         <div class="question-wrapper">
           <h3 class="question"
-            v-if="currendQuestion"
-          >{{ currendQuestion.question }}</h3>
+            v-if="currentQuestion"
+          >{{ currentQuestion.question }}</h3>
         </div>
 
         <div class="answer-wrapper">
           <input type="button"
-            v-if="currendQuestion"
-            v-for="(answer, index) in currendQuestion.answers" 
+            v-if="currentQuestion"
+            v-for="(answer, index) in currentQuestion.answers" 
             :key="index"
             :value="`${index}: ${answer}`"
+            @click="answerCheck(index)"
+            :class="{ 'waiting-verification': selectedAnswerIndex === index }"
           >
         </div>
 
@@ -34,10 +36,11 @@
 
       <div class="money-counter">
         <p
-          v-for="(price, index) in prices"
-          :key="index"  
+          v-for="(prize, index) in prices"
+          :key="index"
+          :class="{ 'prize-won': prize.won }"
         >
-          {{ price }}
+          {{ prize.price }}
         </p>
       </div>
     </div>
@@ -48,13 +51,22 @@
 export default {
   data() {
     return {
+      //nyeremény összegek és mellettük, hogy melyiknél tart, megnyerte-e
       prices: [
-        '10.000', '20.000', '50.000', '100.000', '250.000',
-        '500.000', '750.000', '1.000.000', '1.500.000', '2.000.000',
-        '5.000.000', '10.000.000', '15.000.000', '25.000.000', '50.000.000'
+        {price: "10.000", won: true}, {price: "20.000", won: false},
+        {price: "50.000", won: false}, {price: "100.000", won: false},
+        {price: "250.000", won: false}, {price: "500.000", won: false},
+        {price: "750.000", won: false}, {price: "1.000.000", won: false},
+        {price: "1.500.000", won: false}, {price: "2.000.000", won: false},
+        {price: "5.000.000", won: false}, {price: "10.000.000", won: false},
+        {price: "15.000.000", won: false}, {price: "25.000.000", won: false},
+        {price: "50.000.000", won: false}
       ],
       questionList: null,
-      currendQuestion: null,
+      currentQuestion: null,
+      questionCounter: 1,
+      correctAnswer: false,
+      selectedAnswerIndex: '',
     }
   },
   methods: {
@@ -70,7 +82,15 @@ export default {
     game() {
       //a currentQuestion változóban eltárolja a jelenlegi (random sorsolt)
       //kérdést és a hozzá tartozó dolgokat
-      this.currendQuestion = this.questionList.questions[Math.floor(Math.random() * this.questionList.questions.length)];
+      this.currentQuestion = this.questionList.questions[Math.floor(Math.random() * this.questionList.questions.length)];
+    },
+
+    answerCheck(clickedAnswer) {
+      this.selectedAnswerIndex = clickedAnswer;
+      console.log(this.selectedAnswerIndex);
+      if (clickedAnswer === this.currentQuestion.correctAnswer) {
+        
+      }
     }
   },
   async mounted() {
@@ -150,8 +170,8 @@ main {
   cursor: pointer;
   background-color: transparent;
   font-size: 20px;
-  border: 1px solid white;
-  color: white;
+  border: 1px solid hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 100%);
   padding: 10px 30px;
   border-radius: 5px;
 }
@@ -169,6 +189,22 @@ main {
 .money-counter p {
   font-weight: 600;
   margin: 6px 0;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid hsl(0, 0%, 100%);
+}
+
+.prize-won {
+  background-color: hsl(39, 100%, 50%);
+  color: hsl(0, 0%, 0%);
+  border: 1px solid hsl(0, 0%, 0%) !important;
+}
+
+.waiting-verification {
+  color: hsl(0, 0%, 0%) !important;
+  background-color: hsl(39, 100%, 50%) !important;
+}
+
+.correct-answer {
+  color: black !important;
+  background-color: hsl(120, 100%, 25%) !important;
 }
 </style>

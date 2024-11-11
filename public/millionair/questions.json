@@ -91,23 +91,243 @@
     {
       "question": "Melyik ország rendezte a 2016-os nyári olimpiai játékokat?",
       "answers": {
-        "A": "Egyesült Államok",
+        "A": "Brazília",
         "B": "Kína",
-        "C": "Brazília",
+        "C": "Egyesült Államok",
         "D": "Japán"
       },
-      "correctAnswer": "C",
+      "correctAnswer": "A",
       "exists": true
     },
     {
       "question": "Melyik szín nem része a magyar zászlónak?",
       "answers": {
-        "A": "Piros",
+        "A": "Kék",
         "B": "Fehér",
         "C": "Zöld",
-        "D": "Kék"
+        "D": "Piros"
+      },
+      "correctAnswer": "A",
+      "exists": true
+    },
+    {
+      "question": "Melyik bolygón található a Mount Olympus vulkán?",
+      "answers": {
+        "A": "Föld",
+        "B": "Vénusz",
+        "C": "Mars",
+        "D": "Jupiter"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Ki volt az első amerikai elnök?",
+      "answers": {
+        "A": "Abraham Lincoln",
+        "B": "George Washington",
+        "C": "Thomas Jefferson",
+        "D": "John Adams"
+      },
+      "correctAnswer": "B",
+      "exists": true
+    },
+    {
+      "question": "Melyik folyó folyik keresztül Budapesten?",
+      "answers": {
+        "A": "Duna",
+        "B": "Rajna",
+        "C": "Szajna",
+        "D": "Temze"
+      },
+      "correctAnswer": "A",
+      "exists": true
+    },
+    {
+      "question": "Mi Magyarország hivatalos nyelve?",
+      "answers": {
+        "A": "Angol",
+        "B": "Német",
+        "C": "Magyar",
+        "D": "Francia"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Melyik évben történt a Holdra szállás?",
+      "answers": {
+        "A": "1965",
+        "B": "1969",
+        "C": "1972",
+        "D": "1975"
+      },
+      "correctAnswer": "B",
+      "exists": true
+    },
+    {
+      "question": "Ki festette a Mona Lisát?",
+      "answers": {
+        "A": "Pablo Picasso",
+        "B": "Vincent van Gogh",
+        "C": "Leonardo da Vinci",
+        "D": "Michelangelo"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Mi az Egyesült Államok pénzneme?",
+      "answers": {
+        "A": "Euro",
+        "B": "Font",
+        "C": "Jen",
+        "D": "Dollár"
       },
       "correctAnswer": "D",
+      "exists": true
+    },
+    {
+      "question": "Melyik filmben szerepel a híres mondat: 'Én vagyok az apád'?",
+      "answers": {
+        "A": "Csillagok háborúja",
+        "B": "Vissza a jövőbe",
+        "C": "Harry Potter",
+        "D": "Gyűrűk Ura"
+      },
+      "correctAnswer": "A",
+      "exists": true
+    },
+    {
+      "question": "Melyik híres egyenlet jelenti az energiát a relativitáselméletben?",
+      "answers": {
+        "A": "F=ma",
+        "B": "E=mc^2",
+        "C": "V=IR",
+        "D": "pV=nRT"
+      },
+      "correctAnswer": "B",
+      "exists": true
+    },
+    {
+      "question": "Ki írta az 'Odüsszeiát'?",
+      "answers": {
+        "A": "Platón",
+        "B": "Arisztotelész",
+        "C": "Szophoklész",
+        "D": "Homérosz"
+      },
+      "correctAnswer": "D",
+      "exists": true
+    },
+    {
+      "question": "Melyik ásvány a gyémánt alapanyaga?",
+      "answers": {
+        "A": "Arany",
+        "B": "Szén",
+        "C": "Vas",
+        "D": "Kén"
+      },
+      "correctAnswer": "B",
+      "exists": true
+    },
+    {
+      "question": "Melyik országban található a Nagy Piramis?",
+      "answers": {
+        "A": "Irak",
+        "B": "Irán",
+        "C": "Egyiptom",
+        "D": "India"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Ki fedezte fel Amerikát 1492-ben?",
+      "answers": {
+        "A": "Vasco da Gama",
+        "B": "Kolumbusz Kristóf",
+        "C": "Marco Polo",
+        "D": "Amerigo Vespucci"
+      },
+      "correctAnswer": "B",
+      "exists": true
+    },
+    {
+      "question": "Melyik ország zászlajának színei: piros, fehér és zöld?",
+      "answers": {
+        "A": "Magyarország",
+        "B": "Olaszország",
+        "C": "Mexikó",
+        "D": "Mindhárom"
+      },
+      "correctAnswer": "D",
+      "exists": true
+    },
+    {
+      "question": "Ki volt Szent István király Magyarországon?",
+      "answers": {
+        "A": "Az első király",
+        "B": "Erdély fejedelme",
+        "C": "Tudós",
+        "D": "Szabadságharcos"
+      },
+      "correctAnswer": "A",
+      "exists": true
+    },
+    {
+      "question": "Hány hónap van egy évben?",
+      "answers": {
+        "A": "10",
+        "B": "11",
+        "C": "12",
+        "D": "13"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Melyik bolygót nevezik a 'Vörös Bolygónak'?",
+      "answers": {
+        "A": "Merkúr",
+        "B": "Vénusz",
+        "C": "Mars",
+        "D": "Szaturnusz"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Mi a víz képlete?",
+      "answers": {
+        "A": "H2O",
+        "B": "CO2",
+        "C": "O2",
+        "D": "N2"
+      },
+      "correctAnswer": "A",
+      "exists": true
+    },
+    {
+      "question": "Melyik tengert található Olaszország nyugati partjainál?",
+      "answers": {
+        "A": "Balti-tenger",
+        "B": "Földközi-tenger",
+        "C": "Adriai-tenger",
+        "D": "Északi-tenger"
+      },
+      "correctAnswer": "B",
+      "exists": true
+    },
+    {
+      "question": "Ki írta a 'Háború és béke' című regényt?",
+      "answers": {
+        "A": "Dosztojevszkij",
+        "B": "Gogol",
+        "C": "Tolsztoj",
+        "D": "Csehov"
+      },
+      "correctAnswer": "C",
       "exists": true
     }
   ]
