@@ -19,7 +19,12 @@
             :key="index"
             :value="`${index}: ${answer}`"
             @click="answerCheck(index)"
-            :class="{ 'waiting-verification': selectedAnswerIndex === index }"
+            :disabled="isAnswered"
+            :class="{
+              'waiting-verification': selectedAnswerIndex === index,
+              'correct-answer': correctAnswer && selectedAnswerIndex === index,
+              'wrong-answer': wrongAnswer && selectedAnswerIndex === index
+            }"
           >
         </div>
 
@@ -65,8 +70,10 @@ export default {
       questionList: null,
       currentQuestion: null,
       questionCounter: 1,
-      correctAnswer: false,
       selectedAnswerIndex: '',
+      correctAnswer: false,
+      wrongAnswer: false,
+      isAnswered: false
     }
   },
   methods: {
@@ -83,14 +90,61 @@ export default {
       //a currentQuestion változóban eltárolja a jelenlegi (random sorsolt)
       //kérdést és a hozzá tartozó dolgokat
       this.currentQuestion = this.questionList.questions[Math.floor(Math.random() * this.questionList.questions.length)];
+
+      //ami generál kérdéseket ameddig nem talál egy olyat ami még nem volt
+      //ha viszont már mind volt akkor az összes kérdés exist tulajdonságát
+      //true-ra állítja. hogy újra szerepelhessen
+      let questionFalseCounter = this.questionList.questions.length;
+      while (this.currentQuestion.exists === false) {
+        this.currentQuestion = this.questionList.questions[Math.floor(Math.random() * this.questionList.questions.length)];
+        questionFalseCounter--;
+        if (questionFalseCounter === 0) {
+          alert('Elfogytak az új kérdések!');
+          this.questionList.questions.forEach(question => {
+            question.exists = true;
+          });
+        }
+      }
     },
 
     answerCheck(clickedAnswer) {
       this.selectedAnswerIndex = clickedAnswer;
-      console.log(this.selectedAnswerIndex);
-      if (clickedAnswer === this.currentQuestion.correctAnswer) {
-        
-      }
+      this.isAnswered = !this.isAnswered;
+      setTimeout(() => {
+        //ellenőrzi, hogy a kattintott válasz indexe (vagyis a betűje) egyezik-e
+        //a rögzített helyes válasz betűjelével
+        if (clickedAnswer === this.currentQuestion.correctAnswer) {
+          this.correctAnswer = !this.correctAnswer;
+          setTimeout(() => {
+            //ha igen akkor gratulál, a kérdés létezését hamisra állítja és
+            //generál egy új kérdést
+            alert("Gratulálok! Jöhet a következő kérdés: ");
+            this.currentQuestion.exists = false;
+            this.nextQuestion();
+          }, 2100);
+        } else {
+          //ha nem akkor pedig kiírja mi lett volna a helyes
+          this.wrongAnswer = !this.wrongAnswer;
+          setTimeout(() => {
+            alert(`A helyes válasz a " ${this.currentQuestion.correctAnswer} " lett volna!`);
+            //végigmegy a kérdéseken és újra mindet elérhetővé teszi
+            //majd új kérdést generál
+            this.questionList.questions.forEach(question => {
+              question.exists = true;
+            });
+            this.nextQuestion();
+          }, 2100);
+        }
+      }, 2000);
+    },
+
+    nextQuestion() {
+      this.currentQuestion = null;
+      this.selectedAnswerIndex = '';
+      this.correctAnswer = false;
+      this.wrongAnswer = false;
+      this.isAnswered = false;
+      this.game();
     }
   },
   async mounted() {
@@ -204,7 +258,12 @@ main {
 }
 
 .correct-answer {
-  color: black !important;
+  color: hsl(0, 0%, 0%) !important;
   background-color: hsl(120, 100%, 25%) !important;
+}
+
+.wrong-answer {
+  color: hsl(0, 0%, 0%) !important;
+  background-color: hsl(0, 100%, 50%) !important;
 }
 </style>
