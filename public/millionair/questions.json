@@ -166,17 +166,6 @@
       "exists": true
     },
     {
-      "question": "Ki festette a Mona Lisát?",
-      "answers": {
-        "A": "Pablo Picasso",
-        "B": "Vincent van Gogh",
-        "C": "Leonardo da Vinci",
-        "D": "Michelangelo"
-      },
-      "correctAnswer": "C",
-      "exists": true
-    },
-    {
       "question": "Mi az Egyesült Államok pénzneme?",
       "answers": {
         "A": "Euro",
@@ -328,6 +317,446 @@
         "D": "Csehov"
       },
       "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Melyik a legnagyobb óceán a Földön?",
+      "answers": {
+        "A": "Atlanti-óceán",
+        "B": "Indiai-óceán",
+        "C": "Jeges-tenger",
+        "D": "Csendes-óceán"
+      },
+      "correctAnswer": "D",
+      "exists": true
+    },
+    {
+      "question": "Ki találta fel a villanykörtét?",
+      "answers": {
+        "A": "Nikola Tesla",
+        "B": "Alexander Graham Bell",
+        "C": "Thomas Edison",
+        "D": "Albert Einstein"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Melyik magyar várost nevezik a 'Napfény városának'?",
+      "answers": {
+        "A": "Budapest",
+        "B": "Szeged",
+        "C": "Debrecen",
+        "D": "Pécs"
+      },
+      "correctAnswer": "B",
+      "exists": true
+    },
+    {
+      "question": "Melyik növényből készül a tequila?",
+      "answers": {
+        "A": "Szőlő",
+        "B": "Kaktusz",
+        "C": "Agave",
+        "D": "Komló"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Hány szívvel rendelkezik egy polip?",
+      "answers": {
+        "A": "Egy",
+        "B": "Kettő",
+        "C": "Három",
+        "D": "Négy"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Melyik országban található a Machu Picchu?",
+      "answers": {
+        "A": "Brazília",
+        "B": "Peru",
+        "C": "Kolumbia",
+        "D": "Chile"
+      },
+      "correctAnswer": "B",
+      "exists": true
+    },
+    {
+      "question": "Mi a fő összetevője a japán miso levesnek?",
+      "answers": {
+        "A": "Tofu",
+        "B": "Hínár",
+        "C": "Fermentált szójabab",
+        "D": "Rizs"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Ki volt az első női Nobel-díjas?",
+      "answers": {
+        "A": "Marie Curie",
+        "B": "Rosalind Franklin",
+        "C": "Ada Lovelace",
+        "D": "Jane Goodall"
+      },
+      "correctAnswer": "A",
+      "exists": true
+    },
+    {
+      "question": "Melyik bolygón található a legnagyobb gyűrűrendszer?",
+      "answers": {
+        "A": "Föld",
+        "B": "Jupiter",
+        "C": "Szaturnusz",
+        "D": "Neptunusz"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Melyik ország zászlaján található piros mező és fehér kereszt?",
+      "answers": {
+        "A": "Svédország",
+        "B": "Svédország",
+        "C": "Finnország",
+        "D": "Svájc"
+      },
+      "correctAnswer": "D",
+      "exists": true
+    },
+    {
+      "question": "Ki írta a 'Gyűrűk Ura' trilógiát?",
+      "answers": {
+        "A": "J.K. Rowling",
+        "B": "J.R.R. Tolkien",
+        "C": "George R.R. Martin",
+        "D": "C.S. Lewis"
+      },
+      "correctAnswer": "B",
+      "exists": true
+    },
+    {
+      "question": "Melyik ország volt az első, ahol bevezették az általános női választójogot?",
+      "answers": {
+        "A": "Franciaország",
+        "B": "Egyesült Államok",
+        "C": "Új-Zéland",
+        "D": "Svédország"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Mi a kémiai jele a vasnak?",
+      "answers": {
+        "A": "Fe",
+        "B": "Va",
+        "C": "Ir",
+        "D": "V"
+      },
+      "correctAnswer": "A",
+      "exists": true
+    },
+    {
+      "question": "Melyik sportágban használnak 22 játékost egyszerre a pályán?",
+      "answers": {
+        "A": "Kosárlabda",
+        "B": "Labdarúgás",
+        "C": "Rögbi",
+        "D": "Jégkorong"
+      },
+      "correctAnswer": "B",
+      "exists": true
+    },
+    {
+      "question": "Mi az emberi test legnagyobb szerve?",
+      "answers": {
+        "A": "Tüdő",
+        "B": "Szív",
+        "C": "Bélrendszer",
+        "D": "Bőr"
+      },
+      "correctAnswer": "D",
+      "exists": true
+    },
+    {
+      "question": "Ki írta az 'Anna Karenina' című regényt?",
+      "answers": {
+        "A": "Fjodor Dosztojevszkij",
+        "B": "Lev Tolsztoj",
+        "C": "Anton Csehov",
+        "D": "Alekszandr Puskin"
+      },
+      "correctAnswer": "B",
+      "exists": true
+    },
+    {
+      "question": "Melyik világhírű épület található Sydney-ben?",
+      "answers": {
+        "A": "Empire State Building",
+        "B": "Eiffel-torony",
+        "C": "Sydney Operaház",
+        "D": "Big Ben"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Melyik anyagot nevezik az 'élet vizének'?",
+      "answers": {
+        "A": "Alkohol",
+        "B": "Víz",
+        "C": "Olaj",
+        "D": "Szén-dioxid"
+      },
+      "correctAnswer": "B",
+      "exists": true
+    },
+    {
+      "question": "Mi a legnagyobb sivatag a Földön?",
+      "answers": {
+        "A": "Sahara",
+        "B": "Kalahári",
+        "C": "Atacama",
+        "D": "Antarktisz"
+      },
+      "correctAnswer": "D",
+      "exists": true
+    },
+    {
+      "question": "Ki volt az első ember az űrben?",
+      "answers": {
+        "A": "Neil Armstrong",
+        "B": "Buzz Aldrin",
+        "C": "Jurij Gagarin",
+        "D": "John Glenn"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Melyik ország híres a pizzáról és a pastáról?",
+      "answers": {
+        "A": "Franciaország",
+        "B": "Olaszország",
+        "C": "Spanyolország",
+        "D": "Portugália"
+      },
+      "correctAnswer": "B",
+      "exists": true
+    },
+    {
+      "question": "Ki volt az első amerikai elnök?",
+      "answers": {
+        "A": "George Washington",
+        "B": "Abraham Lincoln",
+        "C": "Thomas Jefferson",
+        "D": "Benjamin Franklin"
+      },
+      "correctAnswer": "A",
+      "exists": true
+    },
+    {
+      "question": "Melyik kémiai elem a táblázat első eleme?",
+      "answers": {
+        "A": "Hélium",
+        "B": "Hidrogén",
+        "C": "Oxigén",
+        "D": "Nitrogén"
+      },
+      "correctAnswer": "B",
+      "exists": true
+    },
+    {
+      "question": "Mi volt a Titanic végzete?",
+      "answers": {
+        "A": "Sikeres út",
+        "B": "Eltűnt",
+        "C": "Elsüllyedt",
+        "D": "Elrabolták"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Mi Afrika leghosszabb folyója?",
+      "answers": {
+        "A": "Amazonas",
+        "B": "Duna",
+        "C": "Nílus",
+        "D": "Mississippi"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Melyik híres angol zenekar alapította a 'Beatlemania'-t?",
+      "answers": {
+        "A": "The Beatles",
+        "B": "The Rolling Stones",
+        "C": "Pink Floyd",
+        "D": "Queen"
+      },
+      "correctAnswer": "A",
+      "exists": true
+    },
+    {
+      "question": "Melyik égtáj irányába kel fel a Nap?",
+      "answers": {
+        "A": "Észak",
+        "B": "Dél",
+        "C": "Kelet",
+        "D": "Nyugat"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Mi a neve az emberi test legkisebb csontjának?",
+      "answers": {
+        "A": "Kéztőcsont",
+        "B": "Ujjperc",
+        "C": "Hallócsont",
+        "D": "Lábtőcsont"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Melyik város híres a 'Big Ben' toronyórájáról?",
+      "answers": {
+        "A": "Párizs",
+        "B": "Berlin",
+        "C": "Róma",
+        "D": "London"
+      },
+      "correctAnswer": "D",
+      "exists": true
+    },
+    {
+      "question": "Mi a Föld legmélyebb pontja?",
+      "answers": {
+        "A": "Grand Canyon",
+        "B": "Mariana-árok",
+        "C": "Atlanti-árok",
+        "D": "Mount Everest"
+      },
+      "correctAnswer": "B",
+      "exists": true
+    },
+    {
+      "question": "Ki festette a híres 'Mona Lisa' festményt?",
+      "answers": {
+        "A": "Vincent van Gogh",
+        "B": "Pablo Picasso",
+        "C": "Leonardo da Vinci",
+        "D": "Michelangelo"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Melyik országban található az Eiffel-torony?",
+      "answers": {
+        "A": "Németország",
+        "B": "Spanyolország",
+        "C": "Olaszország",
+        "D": "Franciaország"
+      },
+      "correctAnswer": "D",
+      "exists": true
+    },
+    {
+      "question": "Mi az atommag pozitív töltésű részecskéje?",
+      "answers": {
+        "A": "Elektron",
+        "B": "Neutron",
+        "C": "Proton",
+        "D": "Kvark"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Melyik fém nem rozsdásodik?",
+      "answers": {
+        "A": "Arany",
+        "B": "Vas",
+        "C": "Réz",
+        "D": "Ón"
+      },
+      "correctAnswer": "A",
+      "exists": true
+    },
+    {
+      "question": "Milyen színű a 'Szabadság-szobor' eredetileg?",
+      "answers": {
+        "A": "Zöld",
+        "B": "Bronz",
+        "C": "Ezüst",
+        "D": "Fehér"
+      },
+      "correctAnswer": "B",
+      "exists": true
+    },
+    {
+      "question": "Ki írta a 'Harry Potter' könyvsorozatot?",
+      "answers": {
+        "A": "J.K. Rowling",
+        "B": "George R.R. Martin",
+        "C": "J.R.R. Tolkien",
+        "D": "C.S. Lewis"
+      },
+      "correctAnswer": "A",
+      "exists": true
+    },
+    {
+      "question": "Mi az emberi szem szaruhártyájának funkciója?",
+      "answers": {
+        "A": "Színek megkülönböztetése",
+        "B": "Képalkotás",
+        "C": "Fényvédés",
+        "D": "Fény összegyűjtése"
+      },
+      "correctAnswer": "D",
+      "exists": true
+    },
+    {
+      "question": "Melyik világháborúban harcoltak a szövetségesek és a tengelyhatalmak?",
+      "answers": {
+        "A": "I. világháború",
+        "B": "II. világháború",
+        "C": "Krími háború",
+        "D": "Polgárháború"
+      },
+      "correctAnswer": "B",
+      "exists": true
+    },
+    {
+      "question": "Mi a legmagasabb hegycsúcs Ázsiában?",
+      "answers": {
+        "A": "Kilimandzsáró",
+        "B": "Denali",
+        "C": "Mount Everest",
+        "D": "Mont Blanc"
+      },
+      "correctAnswer": "C",
+      "exists": true
+    },
+    {
+      "question": "Melyik nyelven íródott eredetileg a 'Don Quijote' regény?",
+      "answers": {
+        "A": "Francia",
+        "B": "Angol",
+        "C": "Olasz",
+        "D": "Spanyol"
+      },
+      "correctAnswer": "D",
       "exists": true
     }
   ]

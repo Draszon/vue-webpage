@@ -23,20 +23,19 @@
             :class="{
               'waiting-verification': selectedAnswerIndex === index,
               'correct-answer': correctAnswer && selectedAnswerIndex === index,
-              'wrong-answer': wrongAnswer && selectedAnswerIndex === index
+              'wrong-answer': wrongAnswer && selectedAnswerIndex === index,
+              'phone-help': phoneRandom === index
             }"
           >
         </div>
 
         <div class="help-wrapper">
-          <img class="helper" src="/millionair/phone.svg" alt="telefon">
+          <img class="helper" src="/millionair/phone.svg" alt="telefon"
+            @click="phoneHelp()"
+          >
           <img class="helper" src="/millionair/audience.svg" alt="közönség">
           <p class="helper">50:50</p>
         </div>
-      </div>
-
-      <div class="stop">
-        <input type="button" value="Megállok">
       </div>
 
       <div class="money-counter">
@@ -69,11 +68,12 @@ export default {
       ],
       questionList: null,
       currentQuestion: null,
-      questionCounter: 1,
+      questionCounter: 0,
       selectedAnswerIndex: '',
       correctAnswer: false,
       wrongAnswer: false,
-      isAnswered: false
+      isAnswered: false,
+      phoneRandom: null
     }
   },
   methods: {
@@ -107,6 +107,11 @@ export default {
       }
     },
 
+    phoneHelp() {
+      const abc = ['A', 'B', 'C', 'D'];
+      this.phoneRandom = abc[Math.floor(Math.random() * abc.length)];
+    },
+
     answerCheck(clickedAnswer) {
       this.selectedAnswerIndex = clickedAnswer;
       this.isAnswered = !this.isAnswered;
@@ -116,12 +121,23 @@ export default {
         if (clickedAnswer === this.currentQuestion.correctAnswer) {
           this.correctAnswer = !this.correctAnswer;
           setTimeout(() => {
-            //ha igen akkor gratulál, a kérdés létezését hamisra állítja és
-            //generál egy új kérdést
-            alert("Gratulálok! Jöhet a következő kérdés: ");
-            this.currentQuestion.exists = false;
+            //ha elérte a 15. kérdést megnyerte a főnyereményt
+            if (this.questionCounter === 14) {
+              alert("Gratulálok megnyerted a főnyereményt!");
+              this.moneyReset();
+              this.questionReset();
+            } else {
+              //ha igen akkor gratulál, a kérdés létezését hamisra állítja és
+              //generál egy új kérdést
+              alert(`Gratulálok, jöhet a következő kérdés ${this.prices[this.questionCounter + 1].price}Ft -ért!`);
+              this.currentQuestion.exists = false;
+              this.questionCounter++;
+
+              //nyereményszámlálót növeli mindig és figyeli hanyadik kérdésnél jár a felhasználó
+              this.prices[this.questionCounter].won = true;
+            }
             this.nextQuestion();
-          }, 2100);
+          }, 2050);
         } else {
           //ha nem akkor pedig kiírja mi lett volna a helyes
           this.wrongAnswer = !this.wrongAnswer;
@@ -129,13 +145,28 @@ export default {
             alert(`A helyes válasz a " ${this.currentQuestion.correctAnswer} " lett volna!`);
             //végigmegy a kérdéseken és újra mindet elérhetővé teszi
             //majd új kérdést generál
-            this.questionList.questions.forEach(question => {
-              question.exists = true;
-            });
+            this.questionReset();
+            this.moneyReset();
             this.nextQuestion();
-          }, 2100);
+          }, 2050);
         }
       }, 2000);
+    },
+
+    questionReset() {
+      this.questionList.questions.forEach(question => {
+          question.exists = true;
+      });
+      this.questionCounter = 0;
+    },
+
+    moneyReset() {
+      //a pénznyereményeket visszaállítja alaphelyzetre és a legelsőt
+      //elérhetővé teszi
+      this.prices.forEach(price => {
+        price.won = false;
+      })
+      this.prices[0].won = true;
     },
 
     nextQuestion() {
@@ -144,6 +175,7 @@ export default {
       this.correctAnswer = false;
       this.wrongAnswer = false;
       this.isAnswered = false;
+      this.phoneRandom = null;
       this.game();
     }
   },
@@ -247,9 +279,18 @@ main {
 }
 
 .prize-won {
-  background-color: hsl(39, 100%, 50%);
-  color: hsl(0, 0%, 0%);
+  background-color: hsl(39, 100%, 50%) !important;
+  color: hsl(0, 0%, 0%) !important;
   border: 1px solid hsl(0, 0%, 0%) !important;
+}
+
+.phone-help {
+  background-color: hsl(39, 100%, 36%) !important;
+}
+
+.half-help {
+  background-color: hsl(0, 100%, 50%) !important;
+  color: hsl(0, 0%, 0%) !important;
 }
 
 .waiting-verification {
