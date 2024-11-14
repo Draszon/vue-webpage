@@ -31,10 +31,19 @@
 
         <div class="help-wrapper">
           <img class="helper" src="/millionair/phone.svg" alt="telefon"
+            :class="{ 'disable-helper': disablePhone }"
             @click="phoneHelp()"
           >
-          <img class="helper" src="/millionair/audience.svg" alt="közönség">
-          <p class="helper">50:50</p>
+
+          <img class="helper" src="/millionair/audience.svg" alt="közönség"
+            :class="{ 'disable-helper': disableAudience }"
+            @click="audienceHelp()"
+          >
+
+          <p class="helper"
+            :class="{ 'disable-helper': disableHalf }"
+            
+          >50:50</p>
         </div>
       </div>
 
@@ -73,7 +82,10 @@ export default {
       correctAnswer: false,
       wrongAnswer: false,
       isAnswered: false,
-      phoneRandom: null
+      phoneRandom: null,
+      disablePhone: false,
+      disableAudience: false,
+      disableHalf: false
     }
   },
   methods: {
@@ -107,9 +119,14 @@ export default {
       }
     },
 
+    audienceHelp() {
+      
+    },
+
     phoneHelp() {
       const abc = ['A', 'B', 'C', 'D'];
       this.phoneRandom = abc[Math.floor(Math.random() * abc.length)];
+      this.disablePhone = !this.disablePhone;
     },
 
     answerCheck(clickedAnswer) {
@@ -126,6 +143,7 @@ export default {
               alert("Gratulálok megnyerted a főnyereményt!");
               this.moneyReset();
               this.questionReset();
+              this.helperReset();
             } else {
               //ha igen akkor gratulál, a kérdés létezését hamisra állítja és
               //generál egy új kérdést
@@ -147,6 +165,7 @@ export default {
             //majd új kérdést generál
             this.questionReset();
             this.moneyReset();
+            this.helperReset();
             this.nextQuestion();
           }, 2050);
         }
@@ -158,6 +177,12 @@ export default {
           question.exists = true;
       });
       this.questionCounter = 0;
+    },
+
+    helperReset() {
+      this.disablePhone = false;
+      this.disableHalf = false;
+      this.disableAudience = false;
     },
 
     moneyReset() {
@@ -285,7 +310,8 @@ main {
 }
 
 .phone-help {
-  background-color: hsl(39, 100%, 36%) !important;
+  background-color: hsl(24, 100%, 50%) !important;
+  color: hsl(0, 0%, 0%) !important;
 }
 
 .half-help {
@@ -306,5 +332,11 @@ main {
 .wrong-answer {
   color: hsl(0, 0%, 0%) !important;
   background-color: hsl(0, 100%, 50%) !important;
+}
+
+.disable-helper {
+  opacity: .5;
+  pointer-events: none;
+  cursor: default;
 }
 </style>
