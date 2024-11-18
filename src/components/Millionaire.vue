@@ -24,7 +24,8 @@
               'waiting-verification': selectedAnswerIndex === index,
               'correct-answer': correctAnswer && selectedAnswerIndex === index,
               'wrong-answer': wrongAnswer && selectedAnswerIndex === index,
-              'phone-help': phoneRandom === index
+              'phone-help': phoneRandom === index,
+              'half-help': halfRandom.includes(index)
             }"
           >
         </div>
@@ -42,7 +43,7 @@
 
           <p class="helper"
             :class="{ 'disable-helper': disableHalf }"
-            
+            @click="halfing()"
           >50:50</p>
         </div>
       </div>
@@ -83,9 +84,11 @@ export default {
       wrongAnswer: false,
       isAnswered: false,
       phoneRandom: null,
+      halfRandom: [],
       disablePhone: false,
       disableAudience: false,
-      disableHalf: false
+      disableHalf: false,
+      abc: ['A', 'B', 'C', 'D']
     }
   },
   methods: {
@@ -119,14 +122,23 @@ export default {
       }
     },
 
+    halfing() {
+      //leszűröm a filter függvénnyel hogy csak a helytelen válaszok maradjanak
+      //ezután ezek közül is egy random elemet eltávolítok, hogy csak kettő maradjon
+      const incorrectAnswers = this.abc.filter(option => option != this.currentQuestion.correctAnswer);
+      incorrectAnswers.splice(Math.floor(Math.random() * incorrectAnswers.length), 1);
+      this.halfRandom = incorrectAnswers;
+      this.disableHalf = true;
+    },
+
     audienceHelp() {
-      
+      this.disableAudience = true;
     },
 
     phoneHelp() {
-      const abc = ['A', 'B', 'C', 'D'];
-      this.phoneRandom = abc[Math.floor(Math.random() * abc.length)];
-      this.disablePhone = !this.disablePhone;
+      //const abc = ['A', 'B', 'C', 'D'];
+      this.phoneRandom = this.abc[Math.floor(Math.random() * this.abc.length)];
+      this.disablePhone = true;
     },
 
     answerCheck(clickedAnswer) {
@@ -201,6 +213,7 @@ export default {
       this.wrongAnswer = false;
       this.isAnswered = false;
       this.phoneRandom = null;
+      this.halfRandom = [];
       this.game();
     }
   },
@@ -238,11 +251,12 @@ main {
 .question-wrapper { line-height: 30px; }
 
 .answer-wrapper {
+  max-width: 900px;
   margin: 30px 0;
 }
 
 .answer-wrapper input {
-  width: 250px;
+  width: 350px;
   font-size: 20px;
   background-color: unset;
   color: white;
@@ -315,8 +329,8 @@ main {
 }
 
 .half-help {
-  background-color: hsl(0, 100%, 50%) !important;
-  color: hsl(0, 0%, 0%) !important;
+  color: hsl(0, 0%, 37%) !important;
+  pointer-events: none;
 }
 
 .waiting-verification {
