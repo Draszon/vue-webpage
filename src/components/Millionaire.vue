@@ -48,6 +48,14 @@
         </div>
       </div>
 
+      <div class="audience-help"
+        v-if="audienceHelpEnable"
+      >
+        <p
+          v-for="(letter, index) in this.audienceHelpAnswers"
+        >{{ `${index}: ${letter}%` }}</p>
+      </div>
+
       <div class="money-counter">
         <p
           v-for="(prize, index) in prices"
@@ -88,7 +96,11 @@ export default {
       disablePhone: false,
       disableAudience: false,
       disableHalf: false,
-      abc: ['A', 'B', 'C', 'D']
+      abc: ['A', 'B', 'C', 'D'],
+      audienceHelpEnable: false,
+      audienceHelpAnswers: {
+        A: null, B: null, C: null, D: null
+      }
     }
   },
   methods: {
@@ -104,7 +116,9 @@ export default {
     game() {
       //a currentQuestion változóban eltárolja a jelenlegi (random sorsolt)
       //kérdést és a hozzá tartozó dolgokat
-      this.currentQuestion = this.questionList.questions[Math.floor(Math.random() * this.questionList.questions.length)];
+      this.currentQuestion = this.questionList.questions[
+        Math.floor(Math.random() * this.questionList.questions.length)
+      ];
 
       //ami generál kérdéseket ameddig nem talál egy olyat ami még nem volt
       //ha viszont már mind volt akkor az összes kérdés exist tulajdonságát
@@ -132,11 +146,24 @@ export default {
     },
 
     audienceHelp() {
+      let percent = 100;
+      const minCorrectAnswer = 50;
+      for (let i = 0; i < this.abc.length; i++) {
+        let random = Math.floor(Math.random() * percent)
+        
+        this.audienceHelpAnswers[this.abc[i]] = random;
+        percent -= random;
+        console.log(this.audienceHelpAnswers[i]);
+      }
+
+
+
+      console.log(this.audienceHelpAnswers);
+      this.audienceHelpEnable = !this.audienceHelpEnable;
       this.disableAudience = true;
     },
 
     phoneHelp() {
-      //const abc = ['A', 'B', 'C', 'D'];
       this.phoneRandom = this.abc[Math.floor(Math.random() * this.abc.length)];
       this.disablePhone = true;
     },
@@ -156,12 +183,14 @@ export default {
               this.moneyReset();
               this.questionReset();
               this.helperReset();
+              this.audienceReset();
             } else {
               //ha igen akkor gratulál, a kérdés létezését hamisra állítja és
               //generál egy új kérdést
               alert(`Gratulálok, jöhet a következő kérdés ${this.prices[this.questionCounter + 1].price}Ft -ért!`);
               this.currentQuestion.exists = false;
               this.questionCounter++;
+              this.audienceHelpEnable = false;
 
               //nyereményszámlálót növeli mindig és figyeli hanyadik kérdésnél jár a felhasználó
               this.prices[this.questionCounter].won = true;
@@ -178,10 +207,19 @@ export default {
             this.questionReset();
             this.moneyReset();
             this.helperReset();
+            this.audienceReset();
+            this.audienceHelpEnable = false;
             this.nextQuestion();
           }, 2050);
         }
       }, 2000);
+    },
+
+    audienceReset() {
+
+      Object.keys(this.audienceHelpAnswers).forEach(key => {
+        this.audienceHelpAnswers[key] = null;
+      });
     },
 
     questionReset() {
@@ -315,6 +353,14 @@ main {
   font-weight: 600;
   margin: 6px 0;
   border-bottom: 1px solid hsl(0, 0%, 100%);
+}
+
+.audience-help {
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  margin-bottom: 40px;
 }
 
 .prize-won {
