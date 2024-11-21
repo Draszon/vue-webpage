@@ -99,7 +99,10 @@ export default {
       abc: ['A', 'B', 'C', 'D'],
       audienceHelpEnable: false,
       audienceHelpAnswers: {
-        A: null, B: null, C: null, D: null
+        A: null,
+        B: null,
+        C: null,
+        D: null
       }
     }
   },
@@ -147,18 +150,18 @@ export default {
 
     audienceHelp() {
       let percent = 100;
-      const minCorrectAnswer = 50;
-      for (let i = 0; i < this.abc.length; i++) {
-        let random = Math.floor(Math.random() * percent)
-        
-        this.audienceHelpAnswers[this.abc[i]] = random;
-        percent -= random;
-        console.log(this.audienceHelpAnswers[i]);
-      }
-
-
-
-      console.log(this.audienceHelpAnswers);
+      const correctAnswerPercent = Math.floor(Math.random() * (percent - 45 + 1) + 45);
+      percent -= correctAnswerPercent;
+      
+      Object.keys(this.audienceHelpAnswers).forEach(key => {
+        if (key === this.currentQuestion.correctAnswer) {
+          this.audienceHelpAnswers[key] = correctAnswerPercent;
+        } else {
+          let random = Math.floor(Math.random() * percent);
+          this.audienceHelpAnswers[key] = random;
+          percent -= random;
+        }
+      })
       this.audienceHelpEnable = !this.audienceHelpEnable;
       this.disableAudience = true;
     },
