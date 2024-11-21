@@ -161,7 +161,7 @@ export default {
           this.audienceHelpAnswers[key] = random;
           percent -= random;
         }
-      })
+      });
       this.audienceHelpEnable = !this.audienceHelpEnable;
       this.disableAudience = true;
     },
