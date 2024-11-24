@@ -153,6 +153,9 @@ export default {
       const correctAnswerPercent = Math.floor(Math.random() * (percent - 45 + 1) + 45);
       percent -= correctAnswerPercent;
       
+      //a 100% -ból levonom a helyes válasz %-át ami min 45% lehet
+      //a listából kiválasztom a helyes válasz betűjelét és átadom neki az
+      //adott % -ot majd a maradékot a többi között random szétosztom
       Object.keys(this.audienceHelpAnswers).forEach(key => {
         if (key === this.currentQuestion.correctAnswer) {
           this.audienceHelpAnswers[key] = correctAnswerPercent;
@@ -219,7 +222,7 @@ export default {
     },
 
     audienceReset() {
-
+      this.audienceHelpEnable = false;
       Object.keys(this.audienceHelpAnswers).forEach(key => {
         this.audienceHelpAnswers[key] = null;
       });
