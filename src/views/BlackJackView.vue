@@ -1,11 +1,15 @@
+<script setup>
+  import BlackJack from '@/components/BlackJack.vue';
+</script>
+
 <template>
-  <h2 style="margin-top: 100px;">Feltöltés alatt</h2>
-  </template>
+  <BlackJack />
+</template>
   
-  <script>
-  
-  </script>
-  
-  <style scoped>
-  
-  </style>
+<script>
+
+</script>
+
+<style scoped>
+
+</style>

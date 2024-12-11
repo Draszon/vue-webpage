@@ -1,0 +1,134 @@
+{
+  "cards": [
+    {
+      "img": "/blackJack/clubs/club1.png",
+      "value": "ace",
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/club2.png",
+      "value": 2,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/club3.png",
+      "value": 3,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/club4.png",
+      "value": 4,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/club5.png",
+      "value": 5,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/club6.png",
+      "value": 6,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/club7.png",
+      "value": 7,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/club8.png",
+      "value": 8,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/club9.png",
+      "value": 9,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/club10.png",
+      "value": 10,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/club11.png",
+      "value": 10,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/club12.png",
+      "value": 10,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/club13.png",
+      "value": 10,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/diamond1.png",
+      "value": "ace",
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/diamond2.png",
+      "value": 10,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/diamond1.png",
+      "value": 2,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/diamond1.png",
+      "value": 10,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/diamond1.png",
+      "value": 10,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/diamond1.png",
+      "value": 10,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/diamond1.png",
+      "value": 10,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/diamond1.png",
+      "value": 10,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/diamond1.png",
+      "value": 10,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/diamond1.png",
+      "value": 10,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/diamond1.png",
+      "value": 10,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/diamond1.png",
+      "value": 10,
+      "exists": false
+    },
+    {
+      "img": "/blackJack/clubs/diamond1.png",
+      "value": 10,
+      "exists": false
+    }
+  ]
+}
