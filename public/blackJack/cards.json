@@ -3,132 +3,262 @@
     {
       "img": "/blackJack/clubs/club1.png",
       "value": "ace",
-      "exists": false
+      "exists": true
     },
     {
       "img": "/blackJack/clubs/club2.png",
       "value": 2,
-      "exists": false
+      "exists": true
     },
     {
       "img": "/blackJack/clubs/club3.png",
       "value": 3,
-      "exists": false
+      "exists": true
     },
     {
       "img": "/blackJack/clubs/club4.png",
       "value": 4,
-      "exists": false
+      "exists": true
     },
     {
       "img": "/blackJack/clubs/club5.png",
       "value": 5,
-      "exists": false
+      "exists": true
     },
     {
       "img": "/blackJack/clubs/club6.png",
       "value": 6,
-      "exists": false
+      "exists": true
     },
     {
       "img": "/blackJack/clubs/club7.png",
       "value": 7,
-      "exists": false
+      "exists": true
     },
     {
       "img": "/blackJack/clubs/club8.png",
       "value": 8,
-      "exists": false
+      "exists": true
     },
     {
       "img": "/blackJack/clubs/club9.png",
       "value": 9,
-      "exists": false
+      "exists": true
     },
     {
       "img": "/blackJack/clubs/club10.png",
       "value": 10,
-      "exists": false
+      "exists": true
     },
     {
       "img": "/blackJack/clubs/club11.png",
       "value": 10,
-      "exists": false
+      "exists": true
     },
     {
       "img": "/blackJack/clubs/club12.png",
       "value": 10,
-      "exists": false
+      "exists": true
     },
     {
       "img": "/blackJack/clubs/club13.png",
       "value": 10,
-      "exists": false
+      "exists": true
     },
     {
-      "img": "/blackJack/clubs/diamond1.png",
+      "img": "/blackJack/diamonds/diamond1.png",
       "value": "ace",
-      "exists": false
+      "exists": true
     },
     {
-      "img": "/blackJack/clubs/diamond2.png",
-      "value": 10,
-      "exists": false
-    },
-    {
-      "img": "/blackJack/clubs/diamond1.png",
+      "img": "/blackJack/diamonds/diamond2.png",
       "value": 2,
-      "exists": false
+      "exists": true
     },
     {
-      "img": "/blackJack/clubs/diamond1.png",
-      "value": 10,
-      "exists": false
+      "img": "/blackJack/diamonds/diamond3.png",
+      "value": 3,
+      "exists": true
     },
     {
-      "img": "/blackJack/clubs/diamond1.png",
-      "value": 10,
-      "exists": false
+      "img": "/blackJack/diamonds/diamond4.png",
+      "value": 4,
+      "exists": true
     },
     {
-      "img": "/blackJack/clubs/diamond1.png",
-      "value": 10,
-      "exists": false
+      "img": "/blackJack/diamonds/diamond5.png",
+      "value": 5,
+      "exists": true
     },
     {
-      "img": "/blackJack/clubs/diamond1.png",
-      "value": 10,
-      "exists": false
+      "img": "/blackJack/diamonds/diamond6.png",
+      "value": 6,
+      "exists": true
     },
     {
-      "img": "/blackJack/clubs/diamond1.png",
-      "value": 10,
-      "exists": false
+      "img": "/blackJack/diamonds/diamond7.png",
+      "value": 7,
+      "exists": true
     },
     {
-      "img": "/blackJack/clubs/diamond1.png",
-      "value": 10,
-      "exists": false
+      "img": "/blackJack/diamonds/diamond8.png",
+      "value": 8,
+      "exists": true
     },
     {
-      "img": "/blackJack/clubs/diamond1.png",
-      "value": 10,
-      "exists": false
+      "img": "/blackJack/diamonds/diamond9.png",
+      "value": 9,
+      "exists": true
     },
     {
-      "img": "/blackJack/clubs/diamond1.png",
+      "img": "/blackJack/diamonds/diamond10.png",
       "value": 10,
-      "exists": false
+      "exists": true
     },
     {
-      "img": "/blackJack/clubs/diamond1.png",
+      "img": "/blackJack/diamonds/diamond11.png",
       "value": 10,
-      "exists": false
+      "exists": true
     },
     {
-      "img": "/blackJack/clubs/diamond1.png",
+      "img": "/blackJack/diamonds/diamond12.png",
       "value": 10,
-      "exists": false
+      "exists": true
+    },
+    {
+      "img": "/blackJack/diamonds/diamond13.png",
+      "value": 10,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/hearts/heart1.png",
+      "value": "ace",
+      "exists": true
+    },
+    {
+      "img": "/blackJack/hearts/heart2.png",
+      "value": 2,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/hearts/heart3.png",
+      "value": 3,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/hearts/heart4.png",
+      "value": 4,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/hearts/heart5.png",
+      "value": 5,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/hearts/heart6.png",
+      "value": 6,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/hearts/heart7.png",
+      "value": 7,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/hearts/heart8.png",
+      "value": 8,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/hearts/heart9.png",
+      "value": 9,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/hearts/heart10.png",
+      "value": 10,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/hearts/heart11.png",
+      "value": 10,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/hearts/heart12.png",
+      "value": 10,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/hearts/heart13.png",
+      "value": 10,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/spades/spades1.png",
+      "value": "ace",
+      "exists": true
+    },
+    {
+      "img": "/blackJack/spades/spades2.png",
+      "value": 2,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/spades/spades3.png",
+      "value": 3,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/spades/spades4.png",
+      "value": 4,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/spades/spades5.png",
+      "value": 5,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/spades/spades6.png",
+      "value": 6,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/spades/spades7.png",
+      "value": 7,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/spades/spades8.png",
+      "value": 8,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/spades/spades9.png",
+      "value": 9,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/spades/spades10.png",
+      "value": 10,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/spades/spades11.png",
+      "value": 10,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/spades/spades12.png",
+      "value": 10,
+      "exists": true
+    },
+    {
+      "img": "/blackJack/spades/spades13.png",
+      "value": 10,
+      "exists": true
     }
   ]
 }

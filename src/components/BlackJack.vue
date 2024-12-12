@@ -5,7 +5,7 @@
 
         <div class="opponent-wrapper">
           <div class="pc-score">
-            <p>21</p>
+            <p>{{ pcScore.value }}</p>
           </div>
 
           <div class="opponent-cards">
@@ -18,23 +18,26 @@
           <img src="/blackJack/card-deck.png" alt="" class="cards card-btn">
 
           <div class="cards-wrapper" >
-            <img v-if="cardList" :src="cardList.cards[0].img" alt="" class="cards">
-            <img src="/blackJack/clubs/club11.png" alt="" class="cards">
-            <img src="/blackJack/hearts/heart8.png" alt="" class="cards">
-            <img src="/blackJack/spades/spades13.png" alt="" class="cards">
+            
           </div>
         </div>
 
         <div class="player-cards">
-          <img src="/blackJack/hearts/heart8.png" alt="" class="cards">
-          <img src="/blackJack/diamonds/diamond3.png" alt="" class="cards">
+          <img
+            v-if="playerHand"
+            v-for="(x) in playerHand"
+            :src="cardList.cards[x].img"
+            alt="játékos kártya"
+            class="cards"
+          >
         </div>
 
         <div class="player-score">
-          <p>18</p>
+          <p>{{ playerScore.value }}</p>
         </div>
         
         <div class="text">
+          <input class="no-more" type="button" value="Megállok">
           <p>Nyertél</p>
         </div>
 
@@ -48,6 +51,10 @@ export default {
   data() {
     return {
       cardList: null,
+      playerHand: [],
+      pcHand: [],
+      playerScore: { value: 0 },
+      pcScore: { value: 0 }
     }
   },
   methods: {
@@ -55,14 +62,47 @@ export default {
       try {
         const response = await fetch('/blackJack/cards.json');
         this.cardList = await response.json();
-        console.log(this.cardList.cards[0].img);
       } catch (error) {
         console.log('Hiba a lapok betöltésében: ', error);
       }
+    },
+
+    game() {
+      this.starterRandomCards(this.playerHand, this.playerScore.value);
+      this.starterRandomCards(this.pcHand, this.pcScore.value);
+
+      console.log('Játékos: ', this.playerHand, 'PC: ', this.pcHand);
+    },
+
+    //kezdeti lapok beállítása mindkét játékos számára
+    starterRandomCards(player, playerScore) {
+      for (let i = 0; i <= 1; i++) {
+        let rnd = Math.floor(Math.random() * 51) + 1;
+
+        while (this.cardList.cards[rnd].exists === false) {
+          rnd = Math.floor(Math.random() * 51) + 1;
+        }
+
+        player.push(rnd);
+        const score = this.cardList.cards[rnd].value;
+        this.scoreCalc(playerScore, score);
+        this.cardList.cards[rnd].exists = false;
+      }
+    },
+
+    scoreCalc(playerScore, score) {
+      //console.log(playerScore, score);
+      if (score === "ace" && playerScore.value <= 11) {
+        playerScore.value += 11;
+      } else {
+        playerScore.value += 1;
+      }
+      playerScore.value = playerScore.value + score;
     }
   },
   async mounted() {
     await this.fetchData();
+    this.game();
   }
 }
 </script>
@@ -119,6 +159,14 @@ export default {
   height: 25px;
   font-size: 22px;
   text-align: center;
+}
+
+.no-more {
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  height: 35px;
+  width: 130px;
 }
 
 @media (max-width: 768px) {
