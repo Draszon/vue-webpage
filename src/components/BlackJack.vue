@@ -5,27 +5,37 @@
 
         <div class="opponent-wrapper">
           <div class="pc-score">
-            <p>{{ pcScore.value }}</p>
+            <p v-if="hasWin">{{ pcScore.value }}</p>
           </div>
 
-          <div class="opponent-cards">
+          <div v-if="!hasWin" class="opponent-cards">
             <img class="cards" src="/blackJack/playing-card-back.png" alt="kártya hátlap">
             <img class="cards" src="/blackJack/playing-card-back.png" alt="kártya hátlap">
+          </div>
+          <div v-else class="opponent-cards">
+            <img :src="cardList.cards[pcHand[0]].img" class="cards" alt="kártya hátlap">
+            <img :src="cardList.cards[pcHand[1]].img" class="cards" alt="kártya hátlap">
           </div>
         </div>
 
         <div class="field">
-          <img src="/blackJack/card-deck.png" alt="" class="cards card-btn">
+          <img @click="!hasWin && deck()" src="/blackJack/card-deck.png" alt="" class="cards card-btn">
 
           <div class="cards-wrapper" >
-            
+            <img
+              v-if="table"
+              v-for="x in table"
+              :src="cardList.cards[x].img"
+              alt="asztalon lévő kártyák"
+              class="cards"
+            >
           </div>
         </div>
 
         <div class="player-cards">
           <img
             v-if="playerHand"
-            v-for="(x) in playerHand"
+            v-for="x in playerHand"
             :src="cardList.cards[x].img"
             alt="játékos kártya"
             class="cards"
@@ -37,8 +47,8 @@
         </div>
         
         <div class="text">
-          <input class="no-more" type="button" value="Megállok">
-          <p>Nyertél</p>
+          <input :disabled="hasWin" @click="stop()" class="no-more" type="button" value="Megállok">
+          <p class="final-txt">{{ finalText }}</p>
         </div>
 
       </div>
@@ -53,8 +63,11 @@ export default {
       cardList: null,
       playerHand: [],
       pcHand: [],
+      table: [],
       playerScore: { value: 0 },
-      pcScore: { value: 0 }
+      pcScore: { value: 0 },
+      finalText: null,
+      hasWin: false,
     }
   },
   methods: {
@@ -68,36 +81,132 @@ export default {
     },
 
     game() {
-      this.starterRandomCards(this.playerHand, this.playerScore.value);
-      this.starterRandomCards(this.pcHand, this.pcScore.value);
+      this.starterCards(this.playerHand, this.playerScore);
+      this.starterCards(this.pcHand, this.pcScore);
+      this.scoreCheck();
 
-      console.log('Játékos: ', this.playerHand, 'PC: ', this.pcHand);
+      /*segítség nekem
+      this.playerHand.forEach(element => {
+        console.log("Player: ", element, "értéke: ", this.cardList.cards[element].value);
+      });
+      this.pcHand.forEach(element => {
+        console.log("PC: ", element, "értéke: ", this.cardList.cards[element].value);
+      });*/
     },
 
     //kezdeti lapok beállítása mindkét játékos számára
-    starterRandomCards(player, playerScore) {
-      for (let i = 0; i <= 1; i++) {
+    starterCards(hand, pScore) {
+      let randomCards = this.randomCard(2);
+      hand.push(...randomCards);
+
+      this.scoreCalc(pScore, randomCards);
+    },
+
+    //random lapok sorsolása és lapok elérhetőségének beállítása
+    randomCard(piece) {
+      let random = [];
+      for (let i = 1; i <= piece; i++) {
         let rnd = Math.floor(Math.random() * 51) + 1;
 
         while (this.cardList.cards[rnd].exists === false) {
           rnd = Math.floor(Math.random() * 51) + 1;
         }
 
-        player.push(rnd);
-        const score = this.cardList.cards[rnd].value;
-        this.scoreCalc(playerScore, score);
         this.cardList.cards[rnd].exists = false;
+        random.push(rnd);
+      }
+      return random;
+    },
+
+    scoreCalc(playerScore, cardScore) {
+      cardScore.forEach(card => {
+        if (this.cardList.cards[card].value === "ace" && playerScore.value <= 11) {
+          playerScore.value += 11;
+        } else if (this.cardList.cards[card].value === "ace" && playerScore.value > 11) {
+          playerScore.value += 1;
+        } else {
+          playerScore.value += this.cardList.cards[card].value;
+        }
+      });
+    },
+
+    deck() {
+      let randomCards = this.randomCard(1);
+      this.table.push(...randomCards);
+      this.scoreCalc(this.playerScore, randomCards);
+      this.scoreCalc(this.pcScore, randomCards);
+      
+      this.scoreCheck();
+    },
+
+    stop() {
+      this.scoreCheck();
+      if (this.playerScore.value < 21 && this.pcScore.value > 21) {
+        this.finalText = "Nyertél!";
+        this.hasWin = !this.hasWin;
+        this.tableReset();
+      } else if (this.playerScore.value < 21 && this.pcScore.value < 21) {
+        if (this.playerScore.value > this.pcScore.value) {
+          this.finalText = "Nyertél!";
+          this.hasWin = !this.hasWin;
+          this.tableReset();
+        } else if (this.playerScore.value === this.pcScore.value) {
+          this.finalText = "Döntetlen!";
+          this.hasWin = !this.hasWin;
+          this.tableReset();
+        } else {
+          this.finalText = "Vesztettél!";
+          this.hasWin = !this.hasWin;
+          this.tableReset();
+        }
+      } else if (this.playerScore.value === this.pcScore.value) {
+        this.finalText = "Döntetlen!";
+        this.hasWin = !this.hasWin;
+        this.tableReset();
+      } else {
+        this.finalText = "Vesztettél!";
+        this.hasWin = !this.hasWin;
+        this.tableReset();
       }
     },
 
-    scoreCalc(playerScore, score) {
-      //console.log(playerScore, score);
-      if (score === "ace" && playerScore.value <= 11) {
-        playerScore.value += 11;
-      } else {
-        playerScore.value += 1;
+    scoreCheck() {
+      if (this.playerScore.value === 21 && this.pcScore.value === 21) {
+        this.finalText = "Döntetlen!";
+        this.hasWin = !this.hasWin;
+        this.tableReset();
+      } else if ( this.playerScore.value === 21 && this.pcScore.value != 21) {
+        this.finalText = "Nyertél!";
+        this.hasWin = !this.hasWin;
+        this.tableReset();
+      } else if (this.playerScore.value != 21 && this.pcScore.value === 21) {
+        this.finalText = "Vesztettél!";
+        this.hasWin = !this.hasWin;
+        this.tableReset();
+      } else if (this.playerScore.value > 21 && this.pcScore.value > 21) {
+        this.finalText = "Döntetlen!";
+        this.hasWin = !this.hasWin;
+        this.tableReset();
+      } else if (this.playerScore.value > 21) {
+        this.finalText = "Vesztettél!";
+        this.hasWin = !this.hasWin;
+        this.tableReset();
       }
-      playerScore.value = playerScore.value + score;
+    },
+
+    tableReset() {
+      setTimeout(() => {
+        this.playerHand = [];
+        this.pcHand = [];
+        this.table = [];
+        this.playerScore.value = 0;
+        this.pcScore.value = 0;
+        this.finalText = null;
+        this.hasWin =  false;
+
+        this.game();
+      }, 5000);
+      
     }
   },
   async mounted() {
@@ -147,6 +256,8 @@ export default {
   justify-content: center;
 }
 
+.pc-score { height: 20px; }
+
 .player-score, .pc-score {
   font-size: 20px;
   height: 20px;
@@ -159,6 +270,11 @@ export default {
   height: 25px;
   font-size: 22px;
   text-align: center;
+}
+
+.final-txt {
+  color: red;
+  font-size: 30px;
 }
 
 .no-more {
